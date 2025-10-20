@@ -12,10 +12,12 @@ export default function NettbutikkPage() {
         {
           title: "AI-optimalisering",
           desc: "Bli synlig i AI-søk og få flere kunder med våre synlighetsverktøy.",
+          href: "/butikk", // 👉 lenke til nettbutikken
         },
         {
           title: "Hydro Shield",
           desc: "Beskytt propellen og kom raskere i plan med vårt unike produkt.",
+          href: "/butikk", // 👉 lenke til nettbutikken
         },
         {
           title: "Smarthus",
