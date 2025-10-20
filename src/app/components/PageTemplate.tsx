@@ -9,6 +9,7 @@ interface PageTemplateProps {
   onButtonClick?: () => void;
   buttonHref?: string; // ✅ lagt til støtte for lenke-knapp
   bgColor?: string;
+  bgImage?: string; 
   services?: { title: string; desc: string }[];
 }
 
