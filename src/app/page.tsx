@@ -325,9 +325,9 @@ function ServiceCard({
   );
 }
 
-function ProjectCard({ img, title, tag }: { img: string; title: string; tag: string }) {
+function ProjectCard({ img, title, tag, href }: { img: string; title: string; tag: string; href: string }) {
   return (
-    <a href="/prosjekter" className="group block overflow-hidden rounded-2xl bg-neutral-800 ring-1 ring-neutral-700">
+    <a href={href} className="group block overflow-hidden rounded-2xl bg-neutral-800 ring-1 ring-neutral-700">
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <img
           src={img}
