@@ -1,4 +1,4 @@
-// === FIXED & CENTERED: src/app/components/header.tsx ===
+// === START FIXED: src/app/components/Header.tsx ===
 "use client";
 
 import Link from "next/link";
@@ -10,6 +10,7 @@ const links = [
   { href: "/", text: "Hjem" },
   { href: "/ventilasjon", text: "Ventilasjon" },
   { href: "/tomrer", text: "Tømrer" },
+  { href: "/prosjekter", text: "Prosjekter" },
   { href: "/butikk", text: "Nettbutikk" },
   { href: "/kontakt", text: "Kontakt" },
 ];
@@ -23,8 +24,8 @@ const headerStyle = {
   borderColor: "rgba(255,255,255,0.15)",
   height: "90px",
   fontSize: "1rem",
-  logoScale: 2.25, // ← Øk eller reduser for større/mindre firmanavn
-  logoOffset: "-1px", // ← Løfter/senker firmanavnet litt
+  logoScale: 2.25,
+  logoOffset: "-1px",
 };
 
 export default function Header() {
@@ -37,7 +38,7 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 md:px-12 shadow-lg backdrop-blur-md transition-all"
+      className="fixed top-0 left-0 w-full z-[9999] flex items-center justify-between px-4 md:px-12 shadow-lg backdrop-blur-md transition-all"
       style={{
         backgroundColor: headerStyle.bgColor,
         color: headerStyle.textColor,
@@ -55,8 +56,8 @@ export default function Header() {
           lineHeight: "1",
         }}
       >
-<span style={{ color: "#4af0c4" }}>Service </span>
-<span style={{ color: "#ffffff" }}>Leverandøren AS</span>
+        <span style={{ color: "#4af0c4" }}>Service </span>
+        <span style={{ color: "#ffffff" }}>Leverandøren AS</span>
       </div>
 
       {/* Desktop-meny */}
@@ -88,14 +89,15 @@ export default function Header() {
       {/* Mobil-meny knapp */}
       <button
         onClick={() => setMenuOpen(!menuOpen)}
-        className="md:hidden p-3 text-neutral-200 hover:text-emerald-300 transition"
+        className="md:hidden p-3 text-neutral-200 hover:text-emerald-300 transition relative z-[10000]"
+        aria-label="Åpne meny"
       >
-        {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        {menuOpen ? <X size={28} /> : <Menu size={28} />}
       </button>
 
       {/* Mobil-meny dropdown */}
       {menuOpen && (
-        <nav className="absolute top-full left-0 w-full bg-neutral-900/95 border-t border-neutral-700 py-4 px-6 flex flex-col gap-3 md:hidden z-40">
+        <nav className="absolute top-full left-0 w-full bg-neutral-900/95 border-t border-neutral-700 py-4 px-6 flex flex-col gap-3 md:hidden z-[9998] shadow-lg">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -103,7 +105,7 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
               className={`${
                 pathname === link.href ? "text-emerald-400 font-semibold" : "text-neutral-200"
-              } hover:text-emerald-300`}
+              } hover:text-emerald-300 text-lg`}
             >
               {link.text}
             </Link>
@@ -113,3 +115,4 @@ export default function Header() {
     </header>
   );
 }
+// === END FIXED: src/app/components/Header.tsx ===
