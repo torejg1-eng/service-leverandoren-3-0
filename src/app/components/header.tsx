@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-12 shadow-lg backdrop-blur-md transition-all"
+      className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 md:px-12 shadow-lg backdrop-blur-md transition-all"
       style={{
         backgroundColor: headerStyle.bgColor,
         color: headerStyle.textColor,
@@ -88,14 +88,14 @@ export default function Header() {
       {/* Mobil-meny knapp */}
       <button
         onClick={() => setMenuOpen(!menuOpen)}
-        className="md:hidden p-2 text-neutral-200"
+        className="md:hidden p-3 text-neutral-200 hover:text-emerald-300 transition"
       >
         {menuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
       {/* Mobil-meny dropdown */}
       {menuOpen && (
-        <nav className="absolute top-full left-0 w-full bg-neutral-900/95 border-t border-neutral-700 py-4 px-6 flex flex-col gap-3 md:hidden">
+        <nav className="absolute top-full left-0 w-full bg-neutral-900/95 border-t border-neutral-700 py-4 px-6 flex flex-col gap-3 md:hidden z-40">
           {links.map((link) => (
             <Link
               key={link.href}
