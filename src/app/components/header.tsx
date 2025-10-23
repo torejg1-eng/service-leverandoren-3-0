@@ -49,18 +49,20 @@ export default function Header() {
         fontSize: headerStyle.fontSize,
       }}
     >
-      {/* Logo */}
-      <div
-        className="font-extrabold tracking-tight select-none leading-none"
-        style={{
-          transform: `scale(${headerStyle.logoScale}) translateY(${headerStyle.logoOffset})`,
-          transformOrigin: "left center",
-        }}
-      >
-        <span className="text-emerald-400">Service </span>
-        <span className="text-white">Leverandøren</span>
-        <span className="text-neutral-400 text-[0.8em] ml-1">AS</span>
-      </div>
+{/* Logo */}
+<div
+  className="font-extrabold tracking-tight select-none leading-none text-center md:text-left"
+  style={{
+    transform: `scale(${headerStyle.logoScale}) translateY(${headerStyle.logoOffset})`,
+    transformOrigin: "left center",
+    maxWidth: "90vw", // hindrer overflow på mobil
+    lineHeight: "1.1",
+  }}
+>
+  <span className="block md:inline text-emerald-400">Service</span>
+  <span className="block md:inline text-white md:ml-2">Leverandøren</span>
+  <span className="text-neutral-400 text-[0.8em] ml-1">AS</span>
+</div>
 
       {/* Desktop-meny */}
       <nav className="hidden md:flex gap-8">
