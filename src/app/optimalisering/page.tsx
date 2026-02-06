@@ -85,6 +85,110 @@ export default function OptimaliseringPage() {
         </div>
       </section>
 
+{/* Hvor ligger ditt bygg? */}
+<section className="max-w-5xl mx-auto mt-14">
+  <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+    Hvor ligger ditt bygg i praksis?
+  </h2>
+
+  <p className="mt-3 text-neutral-300 leading-relaxed">
+    De fleste bygg fungerer helt greit i hverdagen. Likevel ser vi ofte at varme,
+    ventilasjon og drift ikke er optimalt samkjørt. Forskjellen mellom fungerende
+    og optimalisert er ofte betydelig – både teknisk og økonomisk.
+  </p>
+
+  <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+    {/* 1 */}
+    <div className="rounded-2xl border border-white/15 bg-neutral-900/30 p-5">
+      <h3 className="font-bold text-lg tracking-tight mb-3">
+        1. Godt optimalisert
+      </h3>
+<ul className="list-disc list-outside pl-6 space-y-2 text-neutral-300 leading-relaxed">
+        <li>Samspill mellom varme og ventilasjon fungerer i hele bygget</li>
+        <li>Driftstid er tilpasset faktisk bruk av bygget</li>
+        <li>Energibruken er stabil og forutsigbar over tid</li>
+        <li>Tekniske anlegg arbeider sammen uten overstyring</li>
+        <li>Ønsket temperatur opprettholdes uten at systemer kompenserer for hverandre</li>
+        <li className="text-emerald-300 font-semibold pt-2">
+          Dette nivået oppnås sjeldent i ordinær drift
+        </li>
+      </ul>
+    </div>
+
+    {/* 2 */}
+    <div className="rounded-2xl border border-white/15 bg-neutral-900/30 p-5">
+      <h3 className="font-bold text-lg tracking-tight mb-3">
+        2. Fungerer greit – men sløser
+      </h3>
+<ul className="list-disc list-outside pl-6 space-y-2 text-neutral-300 leading-relaxed">
+        <li>Ingen akutte klager fra brukere eller leietakere</li>
+        <li>Overtemperatur løses ofte med økt ventilasjon</li>
+        <li>Driftstid er lengre enn faktisk behov</li>
+        <li>Energiforbruket er høyere enn nødvendig, men oppleves som normalt</li>
+        <li className="text-emerald-300 font-semibold pt-2">
+          Dette er der de fleste bygg befinner seg
+        </li>
+      </ul>
+    </div>
+
+    {/* 3 */}
+    <div className="rounded-2xl border border-white/15 bg-neutral-900/30 p-5">
+      <h3 className="font-bold text-lg tracking-tight mb-3">
+        3. Delvis ute av balanse
+      </h3>
+<ul className="list-disc list-outside pl-6 space-y-2 text-neutral-300 leading-relaxed">
+        <li>Klager i enkelte soner eller perioder</li>
+        <li>Tidligere justeringer er gjort uten helhetlig plan</li>
+        <li>Varme og ventilasjon motarbeider hverandre</li>
+        <li>Driftspersonell er usikre på hva som kan justeres videre</li>
+        <li className="pt-2">
+          Bygget fungerer, men er teknisk ustabilt
+        </li>
+      </ul>
+    </div>
+
+    {/* 4 */}
+    <div className="rounded-2xl border border-white/15 bg-neutral-900/30 p-5">
+      <h3 className="font-bold text-lg tracking-tight mb-3">
+        4. Feilregulert
+      </h3>
+<ul className="list-disc list-outside pl-6 space-y-2 text-neutral-300 leading-relaxed">
+        <li>Ventilasjon brukes i praksis som kjøleanlegg</li>
+        <li>Historiske endringer har bygget seg opp over tid</li>
+        <li>Uklare eller feil referanser i styring og regulering</li>
+        <li>Høyt energiforbruk uten tilsvarende komfort</li>
+        <li className="pt-2">
+          Feilene er synlige, men årsaken er ofte sammensatt
+        </li>
+      </ul>
+    </div>
+  </div>
+  {/* Erfaringsbasert fordeling */}
+<div className="max-w-4xl mx-auto mt-6">
+  <p className="text-sm md:text-[0.95rem] text-neutral-400 leading-relaxed">
+    <span className="font-semibold text-neutral-300">
+      Erfaringsbasert virkelighetsbilde:
+    </span>{" "}
+    Basert på praktisk arbeid med norske kontor- og næringsbygg ser vi ofte
+    følgende grove fordeling:
+  </p>
+
+  <ul className="mt-3 list-disc list-outside pl-6 space-y-1.5 text-sm md:text-[0.95rem] text-neutral-400">
+    <li>Omtrent <span className="text-neutral-300 font-semibold">10–15&nbsp;%</span> av bygg er reelt godt optimalisert</li>
+    <li>Rundt <span className="text-neutral-300 font-semibold">40–50&nbsp;%</span> fungerer greit, men har betydelig energisløsing</li>
+    <li>Ca. <span className="text-neutral-300 font-semibold">25–30&nbsp;%</span> er delvis ute av balanse</li>
+    <li>Omtrent <span className="text-neutral-300 font-semibold">10–15&nbsp;%</span> er tydelig feilregulert</li>
+  </ul>
+
+  <p className="mt-3 text-sm md:text-[0.95rem] text-neutral-400 leading-relaxed">
+    Det innebærer at sannsynligheten for at et bygg faktisk befinner seg i
+    øverste kategori er relativt lav – selv om bygget i hverdagen kan oppleves
+    som velfungerende.
+  </p>
+</div>
+
+</section>
+
       {/* Slik jobber vi */}
       <section className="max-w-5xl mx-auto mt-14">
         <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Slik jobber vi</h2>
