@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/tomrer", "destination": "/prosjekt-ombygging", "permanent": true },
+    { "source": "/ventilasjon", "destination": "/optimalisering", "permanent": true },
+    { "source": "/butikk", "destination": "https://nordicsmart.eu", "permanent": true },
+    { "source": "/tjenester", "destination": "/optimalisering", "permanent": true }
+  ]
+}
