@@ -13,8 +13,8 @@ export default function KontaktPage() {
         bgImage="/images/kontakt.webp"
       />
 
-      <main className="px-4 md:px-12 pb-16">
-        <section className="mx-auto max-w-5xl -mt-10">
+      <main className="px-4 md:px-12 pb-16 pt-2">
+        <section className="mx-auto max-w-5xl mt-8">
           {/* Kontaktkort */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="rounded-2xl border border-white/15 bg-neutral-900/40 p-6">
