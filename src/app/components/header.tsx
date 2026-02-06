@@ -3,19 +3,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Geist } from "next/font/google";
+
 const geist = Geist({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
+// ✅ Ny prioritet: Optimalisering → Eiendomsdrift → Prosjekter
 const links = [
-  { href: "/", text: "Hjem" },
-  { href: "/ventilasjon", text: "Ventilasjon" },
-  { href: "/tomrer", text: "Tømrer" },
-  { href: "/prosjekter", text: "Prosjekter" },
-  { href: "/butikk", text: "Nettbutikk" },
+  { href: "/optimalisering", text: "Energioptimalisering" },
+  { href: "/eiendomsdrift", text: "Eiendomsdrift" },
+  { href: "/prosjekt-ombygging", text: "Prosjekt" },
+  { href: "/innsikt", text: "Innsikt" },
   { href: "/kontakt", text: "Kontakt" },
 ];
+
 
 // 🎨 Justerbare verdier
 const headerStyle = {
@@ -30,13 +32,34 @@ const headerStyle = {
   logoOffset: "-1px",
 };
 
+function isActivePath(pathname: string, href: string) {
+  // Hjem skal bare være aktiv når du faktisk er på /
+  if (href === "/") return pathname === "/";
+  // Andre skal være aktive på både /route og /route/under
+  return pathname === href || pathname.startsWith(href + "/");
+}
+
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    document.documentElement.style.setProperty("--header-height", headerStyle.height);
+    document.documentElement.style.setProperty(
+      "--header-height",
+      headerStyle.height
+    );
   }, []);
+
+  // Lukk mobilmeny automatisk ved route-change (nice på mobil)
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  const activeMap = useMemo(() => {
+    const map: Record<string, boolean> = {};
+    for (const l of links) map[l.href] = isActivePath(pathname, l.href);
+    return map;
+  }, [pathname]);
 
   return (
     <header
@@ -49,45 +72,58 @@ export default function Header() {
         fontSize: headerStyle.fontSize,
       }}
     >
-{/* Logo */}
-<div
-  className="font-extrabold tracking-tight select-none leading-none text-center md:text-left"
-  style={{
-    transform: `scale(${headerStyle.logoScale}) translateY(${headerStyle.logoOffset})`,
-    transformOrigin: "left center",
-    maxWidth: "90vw", // hindrer overflow på mobil
-    lineHeight: "1.1",
-  }}
+      {/* Logo */}
+<Link
+  href="/"
+  aria-label="Gå til forsiden"
+  className="group"
 >
-  <span className="block md:inline text-emerald-400">Service</span>
-  <span className="block md:inline text-white md:ml-2">Leverandøren</span>
-  <span className="text-neutral-400 text-[0.8em] ml-1">AS</span>
-</div>
+  <div
+    className="font-extrabold tracking-tight select-none leading-none text-center md:text-left cursor-pointer"
+    style={{
+      transform: `scale(${headerStyle.logoScale}) translateY(${headerStyle.logoOffset})`,
+      transformOrigin: "left center",
+      maxWidth: "90vw",
+      lineHeight: "1.1",
+    }}
+  >
+    <span className="block md:inline text-emerald-400 group-hover:text-emerald-300 transition">
+      Service
+    </span>
+    <span className="block md:inline text-white md:ml-2 group-hover:text-neutral-200 transition">
+      Leverandøren
+    </span>
+    <span className="text-neutral-400 text-[0.8em] ml-1 group-hover:text-neutral-300 transition">
+      AS
+    </span>
+  </div>
+</Link>
 
       {/* Desktop-meny */}
       <nav className="hidden md:flex gap-8">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            style={{
-              color:
-                pathname === link.href
-                  ? headerStyle.linkHover
-                  : headerStyle.linkColor,
-              transition: "color 0.2s ease",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = headerStyle.linkHover)}
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.color =
-                pathname === link.href
+        {links.map((link) => {
+          const active = !!activeMap[link.href];
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              style={{
+                color: active ? headerStyle.linkHover : headerStyle.linkColor,
+                transition: "color 0.2s ease",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = headerStyle.linkHover)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = active
                   ? headerStyle.linkHover
                   : headerStyle.linkColor)
-            }
-          >
-            {link.text}
-          </Link>
-        ))}
+              }
+            >
+              {link.text}
+            </Link>
+          );
+        })}
       </nav>
 
       {/* Mobilmeny knapp */}
@@ -107,20 +143,21 @@ export default function Header() {
             : "opacity-0 -translate-y-3 pointer-events-none"
         }`}
       >
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            onClick={() => setMenuOpen(false)}
-            className={`${
-              pathname === link.href
-                ? "text-emerald-400 font-semibold"
-                : "text-neutral-200"
-            } hover:text-emerald-300 text-lg`}
-          >
-            {link.text}
-          </Link>
-        ))}
+        {links.map((link) => {
+          const active = !!activeMap[link.href];
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className={`${
+                active ? "text-emerald-400 font-semibold" : "text-neutral-200"
+              } hover:text-emerald-300 text-lg`}
+            >
+              {link.text}
+            </Link>
+          );
+        })}
       </nav>
     </header>
   );
