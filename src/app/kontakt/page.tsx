@@ -1,13 +1,123 @@
+// === START: src/app/kontakt/page.tsx ===
 import PageTemplate from "../components/PageTemplate";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function KontaktPage() {
   return (
-    <PageTemplate
-      title="Kontakt oss"
-      subtitle="Du kan nå oss via kontaktskjemaet, e-post eller telefon. Vi svarer så fort vi kan."
-      buttonText="Tilbake til forsiden"
-      buttonHref="/"
-      bgImage="/images/kontakt.webp"
-    />
+    <>
+      <PageTemplate
+        title="Kontakt"
+        subtitle="Send oss en kort forespørsel – eller ta kontakt direkte. Vi svarer så fort vi kan."
+        buttonText="Be om gjennomgang"
+        buttonHref="/kontakt#skjema"
+        bgImage="/images/kontakt.webp"
+      />
+
+      <main className="px-4 md:px-12 pb-16">
+        <section className="mx-auto max-w-5xl -mt-10">
+          {/* Kontaktkort */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="rounded-2xl border border-white/15 bg-neutral-900/40 p-6">
+              <div className="flex items-center gap-2 text-emerald-300 font-semibold">
+                <Phone className="h-5 w-5" /> Telefon
+              </div>
+              <a
+                className="mt-3 block text-lg font-bold text-neutral-100 hover:text-emerald-200 transition"
+                href="tel:+4746925236"
+              >
+                +47 469 25 236
+              </a>
+              <p className="mt-2 text-sm text-neutral-300">
+                Ring eller send SMS. Kveldsbefaring etter avtale.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/15 bg-neutral-900/40 p-6">
+              <div className="flex items-center gap-2 text-emerald-300 font-semibold">
+                <Mail className="h-5 w-5" /> E-post
+              </div>
+              <a
+                className="mt-3 block text-lg font-bold text-neutral-100 hover:text-emerald-200 transition break-all"
+                href="mailto:post@service-leverandoren.no"
+              >
+                post@service-leverandoren.no
+              </a>
+              <p className="mt-2 text-sm text-neutral-300">
+                Beskriv kort byggtype og hva du ønsker å forbedre.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/15 bg-neutral-900/40 p-6">
+              <div className="flex items-center gap-2 text-emerald-300 font-semibold">
+                <MapPin className="h-5 w-5" /> Lokasjon
+              </div>
+              <p className="mt-3 text-lg font-bold text-neutral-100">
+                Skjeberg, Østfold
+              </p>
+              <p className="mt-2 text-sm text-neutral-300">
+                Vi dekker Østfold og nærområdene.
+              </p>
+            </div>
+          </div>
+
+          {/* Skjema + tekst */}
+          <div id="skjema" className="mt-8 rounded-2xl border border-white/15 bg-neutral-900/30 p-6 md:p-8">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-100">
+              Send en forespørsel
+            </h2>
+            <p className="mt-2 text-neutral-300 leading-relaxed max-w-3xl">
+              Fortell kort hva du ønsker hjelp til (energioptimalisering, eiendomsdrift, prosjekt),
+              så tar vi kontakt.
+            </p>
+
+            <form
+              action="https://formspree.io/f/xqkoyqza"
+              method="POST"
+              className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2"
+            >
+              <input
+                name="navn"
+                placeholder="Navn"
+                required
+                className="rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 outline-none ring-emerald-300 placeholder:text-neutral-500 focus:ring-2"
+              />
+              <input
+                name="telefon"
+                placeholder="Telefon"
+                type="tel"
+                required
+                className="rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 outline-none ring-emerald-300 placeholder:text-neutral-500 focus:ring-2"
+              />
+              <input
+                name="epost"
+                placeholder="E-post (valgfritt)"
+                type="email"
+                className="sm:col-span-2 rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 outline-none ring-emerald-300 placeholder:text-neutral-500 focus:ring-2"
+              />
+              <textarea
+                name="beskrivelse"
+                placeholder="Hva kan vi hjelpe med?"
+                rows={5}
+                required
+                className="sm:col-span-2 rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 outline-none ring-emerald-300 placeholder:text-neutral-500 focus:ring-2"
+              />
+
+              <button
+                className="inline-flex items-center justify-center rounded-xl bg-emerald-400 px-5 py-3 font-semibold text-neutral-900 hover:bg-emerald-300 transition sm:w-max"
+                aria-label="Send forespørsel"
+              >
+                Send forespørsel
+              </button>
+            </form>
+
+            <p className="mt-4 text-xs text-white/50">
+              Ved innsending godtar du at vi kan bruke opplysningene til å svare på henvendelsen. Se{" "}
+              <a className="underline hover:text-emerald-200" href="/personvern">personvern</a>.
+            </p>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
+// === END: src/app/kontakt/page.tsx ===
