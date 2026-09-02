@@ -1,4 +1,3 @@
-// === START: src/app/kontakt/page.tsx ===
 import PageTemplate from "../components/PageTemplate";
 import { Phone, Mail, MapPin } from "lucide-react";
 
@@ -38,9 +37,9 @@ export default function KontaktPage() {
               </div>
               <a
                 className="mt-3 block text-lg font-bold text-neutral-100 hover:text-emerald-200 transition break-all"
-                href="mailto:post@service-leverandoren.no"
+                href="mailto:post@serviceleverandøren.no"
               >
-                post@service-leverandoren.no
+                post@serviceleverandøren.no
               </a>
               <p className="mt-2 text-sm text-neutral-300">
                 Beskriv kort byggtype og hva du ønsker å forbedre.
@@ -120,4 +119,3 @@ export default function KontaktPage() {
     </>
   );
 }
-// === END: src/app/kontakt/page.tsx ===
