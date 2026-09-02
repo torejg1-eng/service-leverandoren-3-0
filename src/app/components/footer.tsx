@@ -1,4 +1,3 @@
-// === START: src/app/components/footer.tsx ===
 import Link from "next/link";
 
 export default function Footer() {
@@ -63,9 +62,9 @@ export default function Footer() {
                 <span className="text-white/60">E-post:</span>{" "}
                 <a
                   className="hover:text-emerald-200 transition"
-                  href="mailto:post@service-leverandoren.no"
+                  href="mailto:post@serviceleverandøren.no"
                 >
-                  post@service-leverandoren.no
+                  post@serviceleverandøren.no
                 </a>
               </li>
               <li>
@@ -112,4 +111,3 @@ export default function Footer() {
     </footer>
   );
 }
-// === END: src/app/components/footer.tsx ===
