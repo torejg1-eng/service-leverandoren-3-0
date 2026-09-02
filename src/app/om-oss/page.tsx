@@ -1,26 +1,24 @@
+import type { Metadata } from "next";
 import PageTemplate from "../components/PageTemplate";
+
+export const metadata: Metadata = {
+  title: "Om oss",
+  description: "Service Leverandøren AS kombinerer praktisk håndverk, teknisk byggkompetanse og tydelig prosjektoppfølging i Østfold.",
+  alternates: { canonical: "/om-oss" },
+};
 
 export default function OmOssPage() {
   return (
     <PageTemplate
-      title="Om oss"
-      subtitle="Service Leverandøren AS leverer profesjonelle tjenester innen ventilasjon, bygg og tekniske løsninger. Vi kombinerer håndverk, teknisk kompetanse og moderne teknologi."
-      buttonText="Kontakt oss"
+      title="Praktisk kompetanse. Tydelig ansvar."
+      subtitle="Service Leverandøren AS kombinerer håndverksbakgrunn, teknisk forståelse og operativ erfaring fra bygg. Målet er enkelt: tiltak som fungerer i praksis og blir fulgt ordentlig opp."
+      buttonText="Ta en uforpliktende prat"
       buttonHref="/kontakt"
-      bgImage="/images/omoss.webp"
+      bgImage="/images/omoss-arbeid.webp"
       services={[
-        {
-          title: "Lang erfaring",
-          desc: "Vi har bred erfaring fra både privat og næringsprosjekter, med fokus på kvalitet og detaljutførelse.",
-        },
-        {
-          title: "Tverrfaglig kompetanse",
-          desc: "Kombinasjon av bygg, ventilasjon, energi og teknologi gir helhetlige løsninger.",
-        },
-        {
-          title: "Kundetilfredshet",
-          desc: "Vi setter ærlighet, kommunikasjon og nøyaktighet i høysetet.",
-        },
+        { title: "Praktisk erfaring", desc: "Bred erfaring fra bygg, tekniske anlegg og daglig drift gir realistiske anbefalinger og gjennomførbare løsninger." },
+        { title: "Helhetlig oppfølging", desc: "Vi ser fagene i sammenheng og følger opp kartlegging, tiltak, utførelse og dokumentasjon." },
+        { title: "Ryddig samarbeid", desc: "Tydelige avtaler, direkte kommunikasjon og ærlige prioriteringer gjennom hele oppdraget." },
       ]}
     />
   );
