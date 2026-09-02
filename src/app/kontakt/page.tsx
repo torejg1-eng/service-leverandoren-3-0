@@ -1,15 +1,22 @@
+import type { Metadata } from "next";
 import PageTemplate from "../components/PageTemplate";
 import { Phone, Mail, MapPin } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Kontakt og befaring",
+  description: "Kontakt Service Leverandøren AS for eiendomsdrift, energioptimalisering, byggservice eller prosjekt i Østfold.",
+  alternates: { canonical: "/kontakt" },
+};
 
 export default function KontaktPage() {
   return (
     <>
       <PageTemplate
-        title="Kontakt"
-        subtitle="Send oss en kort forespørsel – eller ta kontakt direkte. Vi svarer så fort vi kan."
-        buttonText="Be om gjennomgang"
+        title="Fortell oss hva bygget trenger"
+        subtitle="Ta kontakt for en uforpliktende prat om drift, energibruk, avvik eller et konkret prosjekt. Du får en ærlig vurdering av hva som bør prioriteres."
+        buttonText="Gå til kontaktskjema"
         buttonHref="/kontakt#skjema"
-        bgImage="/images/kontakt.webp"
+        bgImage="/images/prosjekter/teknisk/teknisk2.webp"
       />
 
       <main className="px-4 md:px-12 pb-16 pt-2">
@@ -60,7 +67,7 @@ export default function KontaktPage() {
           </div>
 
           {/* Skjema + tekst */}
-          <div id="skjema" className="mt-8 rounded-2xl border border-white/15 bg-neutral-900/30 p-6 md:p-8">
+          <div id="skjema" className="mt-8 scroll-mt-28 rounded-2xl border border-white/10 bg-white/[0.035] p-6 md:p-8">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-100">
               Send en forespørsel
             </h2>
@@ -76,12 +83,16 @@ export default function KontaktPage() {
             >
               <input
                 name="navn"
+                aria-label="Navn"
+                autoComplete="name"
                 placeholder="Navn"
                 required
                 className="rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 outline-none ring-emerald-300 placeholder:text-neutral-500 focus:ring-2"
               />
               <input
                 name="telefon"
+                aria-label="Telefon"
+                autoComplete="tel"
                 placeholder="Telefon"
                 type="tel"
                 required
@@ -89,12 +100,15 @@ export default function KontaktPage() {
               />
               <input
                 name="epost"
+                aria-label="E-post"
+                autoComplete="email"
                 placeholder="E-post (valgfritt)"
                 type="email"
                 className="sm:col-span-2 rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 outline-none ring-emerald-300 placeholder:text-neutral-500 focus:ring-2"
               />
               <textarea
                 name="beskrivelse"
+                aria-label="Beskrivelse av behov"
                 placeholder="Hva kan vi hjelpe med?"
                 rows={5}
                 required
