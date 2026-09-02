@@ -7,7 +7,7 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.serviceleverandøren.no"),
+  metadataBase: new URL("https://www.service-leverandøren.no"),
   title: {
     default: "Service Leverandøren AS | Eiendomsdrift og energioptimalisering",
     template: "%s | Service Leverandøren AS",
