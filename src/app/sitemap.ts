@@ -25,7 +25,7 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return routes.map((route) => ({
-    url: `https://www.serviceleverandøren.no${route}`,
+    url: `https://www.service-leverandøren.no${route}`,
     lastModified: now,
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1 : route === "/kontakt" ? 0.9 : 0.7,
