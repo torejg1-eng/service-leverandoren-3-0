@@ -1,4 +1,3 @@
-// === START: src/app/personvern/page.tsx ===
 import Link from "next/link";
 
 export default function PersonvernPage() {
@@ -16,7 +15,7 @@ export default function PersonvernPage() {
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-3">
           <Info title="Behandlingsansvarlig" value="Service Leverandøren AS" />
-          <Info title="Kontakt" value="post@service-leverandoren.no" />
+          <Info title="Kontakt" value="post@serviceleverandøren.no" />
           <Info title="Telefon" value="+47 469 25 236" />
         </div>
 
@@ -127,8 +126,8 @@ export default function PersonvernPage() {
             <div className="mt-4 rounded-2xl border border-white/15 bg-neutral-900/30 p-5">
               <p className="text-neutral-200">
                 <span className="text-white/70">E-post:</span>{" "}
-                <a className="hover:text-emerald-200 transition" href="mailto:post@service-leverandoren.no">
-                  post@service-leverandoren.no
+                <a className="hover:text-emerald-200 transition" href="mailto:post@serviceleverandøren.no">
+                  post@serviceleverandøren.no
                 </a>
               </p>
               <p className="mt-2 text-neutral-200">
@@ -181,4 +180,3 @@ function Info({ title, value }: { title: string; value: string }) {
     </div>
   );
 }
-// === END: src/app/personvern/page.tsx ===
