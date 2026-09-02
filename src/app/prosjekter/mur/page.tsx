@@ -1,38 +1,52 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import ProjectGalleryPage from "@/app/components/ProjectGalleryPage";
 import { getImagesFromFolder } from "@/lib/getImagesFromFolder";
+
+export const metadata: Metadata = {
+  title: "Støttemur og belegningsstein – utført prosjekt",
+  description:
+    "Se utført murarbeid med terrengtilpasset støttemur, trapper og belegningsstein fra byggeprosess til ferdig utemiljø.",
+  alternates: { canonical: "/prosjekter/mur" },
+  openGraph: {
+    title: "Støttemur og belegningsstein – utført prosjekt",
+    description: "Dokumentert arbeidsreferanse fra mur-, terreng- og belegningsarbeid.",
+    url: "/prosjekter/mur",
+    images: [
+      {
+        url: "/images/prosjekter/mur/mur9.webp",
+        alt: "Ferdigstilt støttemur og opparbeidet innkjørsel foran bolig",
+      },
+    ],
+  },
+};
+
+const imageAlts = {
+  "mur1.webp": "Oppbygging av støttemur i skrånende terreng",
+  "mur2.webp": "Støttemur og terrengarbeid under utførelse",
+  "mur3.webp": "Støttemur tilpasset boligens nivåforskjeller",
+  "mur4.webp": "Klargjøring av areal foran ferdig oppført støttemur",
+  "mur5.webp": "Støttemur og grunnarbeid ved innkjørsel",
+  "mur6.webp": "Ferdig belegningsstein i trapp og gangareal",
+  "mur7.webp": "Legging av belegningsstein på opparbeidet underlag",
+  "mur8.webp": "Detaljarbeid med tilpasning av belegningsstein",
+  "mur9.webp": "Ferdigstilt støttemur og opparbeidet innkjørsel foran bolig",
+  "mur10.webp": "Helhetlig utemiljø med støttemur, beplantning og innkjørsel",
+};
 
 export default async function MurProsjekt() {
   const images = await getImagesFromFolder("mur");
 
   return (
-    <section className="bg-neutral-900/40 min-h-screen pt-32 pb-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-white mb-8">Mur-prosjekt</h1>
-        <p className="text-neutral-300 mb-10">
-          Bilder fra murarbeid – hentet fra /public/images/prosjekter/mur/
-        </p>
-
-        {images.length === 0 ? (
-          <p className="text-neutral-400">Ingen bilder funnet i mappen.</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {images.map((src, i) => (
-              <div
-                key={i}
-                className="relative overflow-hidden rounded-xl hover:scale-[1.02] transition-transform"
-              >
-                <Image
-                  src={src}
-                  alt={`Bilde ${i + 1}`}
-                  width={800}
-                  height={600}
-                  className="object-cover rounded-lg"
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
+    <ProjectGalleryPage
+      slug="mur"
+      eyebrow="Mur · utemiljø"
+      title="Støttemur formet etter terrenget"
+      intro="Et omfattende uteprosjekt med støttemur, nivåtilpasning og belegningsstein rundt en eksisterende bolig."
+      detail="Dokumentasjonen følger arbeidet fra oppbygging av muren og klargjøring av underlaget til ferdig innkjørsel, trapp og beplantede utearealer."
+      highlights={["Terreng- og grunnarbeid", "Støttemur og nivåtilpasning", "Belegningsstein og sluttføring"]}
+      images={images}
+      imageAlts={imageAlts}
+      featuredImageName="mur9.webp"
+    />
   );
 }

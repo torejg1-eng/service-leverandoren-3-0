@@ -4,52 +4,54 @@ import { Mail, MapPin, Phone } from "lucide-react";
 const services = [
   ["Energioptimalisering", "/optimalisering"],
   ["Eiendomsdrift", "/eiendomsdrift"],
-  ["Prosjektledelse", "/prosjekt-ombygging"],
+  ["Prosjekt og ombygging", "/prosjekt-ombygging"],
   ["Utførte prosjekter", "/prosjekter"],
 ] as const;
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#060807] text-neutral-300">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
+    <footer className="border-t border-white/10 bg-[#050c09] text-white/65">
+      <div className="site-shell py-14 sm:py-20">
+        <div className="grid gap-12 md:grid-cols-[1.35fr_0.9fr_1fr]">
           <div>
-            <p className="text-xl font-extrabold tracking-tight text-white">
-              <span className="text-emerald-400">Service</span> Leverandøren AS
+            <p className="text-2xl font-extrabold tracking-[-0.045em] text-white">
+              <span className="text-[#38d39f]">Service</span> Leverandøren <span className="text-xs tracking-widest text-white/35">AS</span>
             </p>
-            <p className="mt-4 max-w-md text-sm leading-6 text-neutral-400">
-              Praktisk og ansvarlig oppfølging av bygg – fra kartlegging og teknisk drift til gjennomføring og dokumentasjon.
+            <p className="mt-5 max-w-md text-sm leading-7 text-white/55">
+              Eiendomsdrift, energioptimalisering og prosjektgjennomføring for bygg og eiendommer i Østfold.
             </p>
-            <p className="mt-4 text-xs uppercase tracking-[0.16em] text-neutral-500">
+            <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-[#38d39f]">
               Én kontakt · tydelig ansvar · dokumentert oppfølging
             </p>
           </div>
 
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-white">Tjenester</h2>
-            <ul className="mt-4 space-y-2 text-sm">
+            <h2 className="font-mono text-[0.7rem] font-bold uppercase tracking-[0.16em] text-white">Tjenester</h2>
+            <ul className="mt-5 grid gap-2 text-sm">
               {services.map(([text, href]) => (
-                <li key={href}><Link className="transition hover:text-emerald-300" href={href}>{text}</Link></li>
+                <li key={href}><Link className="transition hover:text-[#38d39f]" href={href}>{text}</Link></li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-white">Kontakt</h2>
-            <ul className="mt-4 space-y-3 text-sm">
-              <li><a className="flex items-center gap-2 transition hover:text-emerald-300" href="tel:+4746925236"><Phone size={16} aria-hidden="true" />+47 469 25 236</a></li>
-              <li><a className="flex items-center gap-2 break-all transition hover:text-emerald-300" href="mailto:post@serviceleverandøren.no"><Mail size={16} aria-hidden="true" />post@serviceleverandøren.no</a></li>
-              <li className="flex items-center gap-2 text-neutral-400"><MapPin size={16} aria-hidden="true" />Skjeberg · Østfold og nærområdene</li>
+            <h2 className="font-mono text-[0.7rem] font-bold uppercase tracking-[0.16em] text-white">Kontakt</h2>
+            <ul className="mt-5 space-y-4 text-sm">
+              <li><a className="flex items-center gap-3 transition hover:text-[#38d39f]" href="tel:+4746925236"><Phone size={16} aria-hidden="true" />+47 469 25 236</a></li>
+              <li><a className="flex items-center gap-3 break-all transition hover:text-[#38d39f]" href="mailto:post@serviceleverandøren.no"><Mail size={16} aria-hidden="true" />post@serviceleverandøren.no</a></li>
+              <li className="flex items-start gap-3 text-white/50"><MapPin size={16} aria-hidden="true" className="mt-0.5 shrink-0" />Åsa-Tors vei 18A, 1746 Skjeberg</li>
             </ul>
+            <Link href="/kontakt" className="mt-6 inline-flex border-b border-[#38d39f] pb-1 text-sm font-bold text-[#38d39f]">Ta kontakt →</Link>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Service Leverandøren AS</p>
+        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} SERVICELEVERANDØREN AS · Org.nr. 936 026 087</p>
           <div className="flex flex-wrap gap-5">
-            <Link className="hover:text-neutral-200" href="/om-oss">Om oss</Link>
-            <Link className="hover:text-neutral-200" href="/personvern">Personvern</Link>
-            <a className="hover:text-neutral-200" href="https://nordicsmart.eu" target="_blank" rel="noreferrer">Nordic Smart ↗</a>
+            <Link className="hover:text-white" href="/om-oss">Om oss</Link>
+            <Link className="hover:text-white" href="/personvern">Personvern</Link>
+            <Link className="hover:text-white" href="/faktura">Faktura</Link>
+            <a className="hover:text-white" href="https://nordicsmart.eu" target="_blank" rel="noreferrer">Nordic Smart ↗</a>
           </div>
         </div>
       </div>

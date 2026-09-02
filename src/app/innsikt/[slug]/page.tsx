@@ -1,168 +1,239 @@
-// === START: src/app/innsikt/[slug]/page.tsx ===
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import {
+  INSIGHTS_URL,
+  formatInsightDate,
+  getInsightArticle,
+  insightArticles,
+} from "../articles";
 
-const posts = [
-    {
-    slug: "hvor-vanlig-er-feilregulerte-bygg",
-    title: "Hvor vanlig er feilregulerte bygg – egentlig?",
-    date: "2026-02-06",
-    tag: "Energi",
-    content: [
-      "Mange næringsbygg fungerer tilsynelatende helt greit. Det er varme i lokalene, ventilasjonen går, og klagene er håndterbare.",
-      "Likevel viser praktisk erfaring at svært mange bygg ligger betydelig over sitt stabile og optimale energinivå – uten at eier eller drift er klar over det.",
-      "Spørsmålet er ikke om bygget fungerer. Spørsmålet er hvor godt det faktisk er regulert.",
+type InsightArticlePageProps = {
+  params: Promise<{ slug: string }>;
+};
 
-      "Basert på praktisk feilsøking og optimalisering i norske kontor- og næringsbygg, ser fordelingen ofte slik ut:",
-      "1) Godt optimalisert (ca. 10–15 %): Reell innregulering/optimalisering siste 3–5 år, samspill mellom varme og ventilasjon fungerer, lavt klagenivå og stabil energibruk.",
-      "2) Fungerer greit – men sløser (ca. 40–50 %): Ingen akutte klager, overtemperatur løses med ventilasjon, for høy minimumsventilasjon og for lang driftstid på kveld/helg. Dette er ofte det største volumet, og her er 10–20 % energireduksjon ofte mulig uten komforttap.",
-      "3) Delvis ute av balanse (ca. 25–30 %): Klager i enkelte soner, tidligere justeringer gjort stykkevis, dårlig samspill mellom varme og ventilasjon, drift tør ikke røre mer. Her blir verdien tydelig – både teknisk og økonomisk.",
-      "4) Feilregulert / akkumulert feil (ca. 10–15 %): Ventilasjon brukt som kjøleanlegg, feil hydraulikk, feil VAV-min, feil referanser, historisk lappverk av justeringer. Sjeldnere, men svært synlige case.",
+export const dynamicParams = false;
 
-      "Hvorfor det ofte ser verre ut enn det egentlig er: De fleste bygg er ikke dårlige i utgangspunktet – de blir dårlige over tid. Flere leverandører har vært inne uten helhetsansvar, endringer gjøres for å stoppe klager, og energibruk følges ikke systematisk opp.",
-      "Resultatet er ofte et bygg som teknisk sett fungerer, men som er regulert helt feil.",
+export function generateStaticParams() {
+  return insightArticles.map(({ slug }) => ({ slug }));
+}
 
-      "Forskjellen mellom vanlig drift og systematisk optimalisering er som regel dette:",
-      "Vanlig praksis: justerer én disiplin av gangen, reagerer på klager, mangler energidata som fasit.",
-      "Systematisk optimalisering: ser varme, ventilasjon og brukeropplevelse samlet, jobber reversibelt og trinnvis, dokumenterer effekt i energikurver, og lar energidata avgjøre – ikke magefølelse.",
-
-      "Realistisk forventning i markedet: 70–80 % av bygg har reelt optimaliseringspotensial. 30–40 % har potensial over 15 % energireduksjon. 10–15 % er tydelige case-studier.",
-      "Det viktigste poenget: Mange eiere tror de er i gruppe 1–2, men ligger i praksis i gruppe 3.",
-
-      "Dette bør ikke selges som «vi fikser bygg som er ute å kjøre». Det bør selges som: «Vi dokumenterer optimal drift og lavest stabile energinivå – uten komforttap». For volumet ligger i midten.",
-      "Vil du vite hvor ditt bygg ligger? Ta kontakt for en gjennomgang.",
-    ],
-    bullets: [
-      "De fleste bygg fungerer, men er ikke optimalisert",
-      "Størst volum: «fungerer greit, men sløser» (ofte 10–20 % potensial)",
-      "Systematisk optimalisering handler om helhet + data som fasit",
-      "Markedet er stort – og «midten» tror ofte de er gode",
-    ],
-  },
-  {
-    slug: "sjekkliste-eiendomsdrift",
-    title: "Sjekkliste for eiendomsdrift som faktisk fungerer",
-    date: "2026-02-03",
-    tag: "Drift",
-    content: [
-      "Målet er enkel kontroll: faste runder, avvik som blir fulgt opp, og en tiltaksplan som faktisk blir gjennomført.",
-      "Start med det grunnleggende: ansvar, frekvens og tydelig rapportering.",
-      "Deretter: prioriter avvik etter risiko og effekt – ikke etter hva som roper høyest i øyeblikket.",
-    ],
-    bullets: [
-      "Faste runder med sjekkliste",
-      "Avvikslogg med prioritet",
-      "Tiltaksliste med ansvar og frist",
-      "Kort rapport som er lett å lese",
-    ],
-  },
-  {
-    slug: "avvik-til-tiltak",
-    title: "Fra avvik til tiltak: slik unngår du at småting blir dyrt",
-    date: "2026-02-03",
-    tag: "Avvik",
-    content: [
-      "Det som ofte koster mest er ikke store prosjekter – men små avvik som får leve lenge.",
-      "Bruk en enkel modell: registrer → vurder risiko → velg tiltak → følg opp.",
-      "Det er oppfølgingen som skaper proff drift.",
-    ],
-    bullets: [
-      "Registrer avvik med bilde/tekst",
-      "Sett prioritet (nå / snart / planlagt)",
-      "Gjør små tiltak tidlig",
-      "Følg opp til det er lukket",
-    ],
-  },
-  {
-    slug: "teknisk-tilsyn-enkel-modell",
-    title: "Teknisk tilsyn: enkel modell for faste runder",
-    date: "2026-02-03",
-    tag: "Tilsyn",
-    content: [
-      "Teknisk tilsyn handler om forutsigbarhet: du vil oppdage feil før de skaper klager eller driftsstans.",
-      "Hold det enkelt: faste punkter, faste runder, og en kort rapport med tiltak.",
-    ],
-    bullets: [
-      "Fast frekvens (f.eks. månedlig/kvartalsvis)",
-      "Sjekkliste med faste punkter",
-      "Avvik → tiltaksliste",
-      "Rapport som alle forstår",
-    ],
-  },
-  {
-    slug: "uteomrader-vinterberedskap",
-    title: "Uteområder og vinterberedskap: det som ofte glemmes",
-    date: "2026-02-03",
-    tag: "Uteområder",
-    content: [
-      "Uteområder gir ofte flest småklager – fordi ingen eier helheten.",
-      "En enkel plan for tilsyn og småutbedringer gir bedre sikkerhet og mindre støy.",
-    ],
-    bullets: [
-      "Tilsyn ved værskifte",
-      "Fokus på sikkerhet og fremkommelighet",
-      "Tiltaksliste for vedlikehold",
-      "Ryddig ansvar og oppfølging",
-    ],
-  },
-];
-
-export default function InnsiktPostPage({
+export async function generateMetadata({
   params,
-}: {
-  params: { slug: string };
-}) {
-  const post = posts.find((p) => p.slug === params.slug);
-  if (!post) return notFound();
+}: InsightArticlePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getInsightArticle(slug);
+
+  if (!article) {
+    return { title: "Fagartikkel ikke funnet" };
+  }
+
+  const canonicalPath = `/innsikt/${article.slug}`;
+
+  return {
+    title: article.title,
+    description: article.description,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      type: "article",
+      url: canonicalPath,
+      title: article.title,
+      description: article.description,
+      publishedTime: `${article.date}T08:00:00+01:00`,
+      authors: ["Service Leverandøren AS"],
+      section: article.tag,
+      images: [
+        {
+          url: "/rustfritt.webp",
+          width: 1536,
+          height: 1024,
+          alt: "Moderne næringsbygg som illustrerer teknisk eiendomsdrift",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description,
+      images: ["/rustfritt.webp"],
+    },
+  };
+}
+
+export default async function InsightArticlePage({ params }: InsightArticlePageProps) {
+  const { slug } = await params;
+  const article = getInsightArticle(slug);
+
+  if (!article) notFound();
+
+  const canonicalUrl = `${INSIGHTS_URL}/${article.slug}`;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${canonicalUrl}#artikkel`,
+        headline: article.title,
+        description: article.description,
+        datePublished: article.date,
+        inLanguage: "nb-NO",
+        mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+        author: {
+          "@type": "Organization",
+          "@id": "https://www.service-leverandøren.no/#virksomhet",
+          name: "Service Leverandøren AS",
+        },
+        publisher: {
+          "@type": "Organization",
+          "@id": "https://www.service-leverandøren.no/#virksomhet",
+          name: "Service Leverandøren AS",
+        },
+        about: article.tag,
+        isPartOf: { "@id": `${INSIGHTS_URL}#innsikt` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${canonicalUrl}#brodsmuler`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Forside",
+            item: "https://www.service-leverandøren.no/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Innsikt",
+            item: INSIGHTS_URL,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: article.shortTitle,
+            item: canonicalUrl,
+          },
+        ],
+      },
+    ],
+  };
 
   return (
-    <main className="min-h-screen px-4 md:px-12 pt-[calc(var(--header-height)+24px)] pb-16">
-      <article className="max-w-3xl mx-auto">
-        <p className="text-emerald-300 font-semibold tracking-wide">{post.tag}</p>
-        <h1 className="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight">
-          {post.title}
-        </h1>
-        <p className="mt-3 text-sm text-neutral-400">{formatDate(post.date)}</p>
+    <main className="min-h-screen bg-[var(--paper)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
 
-        <div className="mt-8 space-y-4 text-neutral-300 leading-relaxed text-lg">
-          {post.content.map((p) => (
-            <p key={p}>{p}</p>
-          ))}
+      <header className="dark-grid border-b border-white/10 text-white">
+        <div className="site-shell pb-16 pt-[calc(var(--header-height)+2.5rem)] md:pb-24 md:pt-[calc(var(--header-height)+4rem)]">
+          <nav aria-label="Brødsmulesti" className="text-sm text-white/55">
+            <ol className="flex flex-wrap items-center gap-2">
+              <li><Link href="/" className="transition-colors hover:text-white">Forside</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><Link href="/innsikt" className="transition-colors hover:text-white">Innsikt</Link></li>
+              <li aria-hidden="true">/</li>
+              <li className="text-white/80" aria-current="page">{article.shortTitle}</li>
+            </ol>
+          </nav>
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-end">
+            <div>
+              <p className="eyebrow eyebrow-on-dark">{article.tag}</p>
+              <h1 className="mt-7 max-w-[18ch] text-[clamp(2.9rem,6.5vw,5.8rem)] font-[850] leading-[0.96] tracking-[-0.06em] text-balance">
+                {article.title}
+              </h1>
+            </div>
+            <div className="border-l border-white/20 pl-6">
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-[var(--green-bright)]">Fagnotat</p>
+              <p className="mt-4 text-sm leading-6 text-white/65">
+                Publisert <time dateTime={article.date}>{formatInsightDate(article.date)}</time>
+                <br />{article.readTime}
+              </p>
+            </div>
+          </div>
         </div>
+      </header>
 
-        <div className="mt-8 rounded-2xl border border-white/15 bg-neutral-900/30 p-6">
-          <h2 className="text-xl font-bold tracking-tight">Kort oppsummert</h2>
-          <ul className="mt-4 space-y-2 text-neutral-200 leading-relaxed">
-            {post.bullets.map((b) => (
-              <li key={b} className="flex gap-2">
-                <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-emerald-300 shrink-0" />
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <article className="paper-grid section-space">
+        <div className="site-shell grid gap-12 lg:grid-cols-[15rem_minmax(0,45rem)] lg:justify-center lg:gap-20">
+          <aside>
+            <div className="border-t-2 border-[var(--green)] pt-5 lg:sticky lg:top-[calc(var(--header-height)+2rem)]">
+              <p className="label-number">Kort oppsummert</p>
+              <ul className="mt-6 space-y-5">
+                {article.summary.map((item) => (
+                  <li key={item} className="grid grid-cols-[1rem_1fr] gap-3 text-sm leading-6 text-[var(--ink-soft)]">
+                    <span className="mt-[0.58rem] h-1.5 w-1.5 bg-[var(--green)]" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
 
-        <div className="mt-10 flex flex-col sm:flex-row gap-3">
-          <Link
-            href="/innsikt"
-            className="inline-flex items-center justify-center rounded-xl border border-white/20 px-5 py-3 font-semibold text-neutral-100 hover:border-emerald-400/60 hover:text-emerald-200 transition"
-          >
-            ← Tilbake til innsikt
-          </Link>
-          <Link
-            href="/kontakt"
-            className="inline-flex items-center justify-center rounded-xl bg-amber-500 px-5 py-3 font-semibold text-neutral-900 hover:bg-amber-400 transition"
-          >
-            Kontakt oss
-          </Link>
+          <div>
+            <div className="border-b border-[var(--line)] pb-10">
+              {article.intro.map((paragraph, index) => (
+                <p
+                  key={paragraph}
+                  className={index === 0
+                    ? "text-xl font-semibold leading-8 tracking-[-0.015em] text-[var(--ink)] md:text-2xl md:leading-9"
+                    : "mt-5 text-lg leading-8 text-[var(--ink-soft)]"}
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            <div className="prose-premium">
+              {article.sections.map((section, sectionIndex) => (
+                <section key={section.heading} className="border-b border-[var(--line)] py-10 md:py-14">
+                  <div className="grid gap-4 sm:grid-cols-[2.25rem_1fr]">
+                    <p className="label-number pt-1" aria-hidden="true">{String(sectionIndex + 1).padStart(2, "0")}</p>
+                    <div>
+                      <h2 className="text-2xl font-extrabold md:text-3xl">{section.heading}</h2>
+                      {section.paragraphs?.map((paragraph) => (
+                        <p key={paragraph} className="mt-5">{paragraph}</p>
+                      ))}
+                      {section.bullets && (
+                        <ul className="mt-6 space-y-3">
+                          {section.bullets.map((item) => (
+                            <li key={item} className="grid grid-cols-[1.1rem_1fr] gap-3">
+                              <span className="mt-[0.68rem] h-px w-3 bg-[var(--green)]" aria-hidden="true" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {section.callout && (
+                        <blockquote className="mt-8 border-l-4 border-[var(--green)] bg-white px-6 py-5 text-lg font-semibold leading-8 text-[var(--ink)]">
+                          {section.callout}
+                        </blockquote>
+                      )}
+                    </div>
+                  </div>
+                </section>
+              ))}
+            </div>
+
+            <section className="mt-12 border border-[var(--line)] bg-white p-7 md:p-10" aria-labelledby="article-next-step">
+              <p className="eyebrow">Neste steg</p>
+              <h2 id="article-next-step" className="mt-5 text-3xl font-extrabold tracking-[-0.04em]">Trenger du et konkret beslutningsgrunnlag?</h2>
+              <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-soft)]">
+                Vi kan gå gjennom bygget, samle observasjonene og prioritere tiltakene i en ryddig plan.
+              </p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <Link href="/kontakt" className="button-primary">Ta kontakt <span aria-hidden="true">→</span></Link>
+                <Link href={article.serviceHref} className="button-secondary">{article.serviceLabel}</Link>
+              </div>
+            </section>
+
+            <Link href="/innsikt" className="editorial-link mt-10"><span aria-hidden="true">←</span> Alle fagartikler</Link>
+          </div>
         </div>
       </article>
     </main>
   );
 }
-
-function formatDate(iso: string) {
-  const [y, m, d] = iso.split("-");
-  return `${d}.${m}.${y}`;
-}
-// === END: src/app/innsikt/[slug]/page.tsx ===

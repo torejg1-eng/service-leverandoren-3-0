@@ -1,38 +1,46 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import ProjectGalleryPage from "@/app/components/ProjectGalleryPage";
 import { getImagesFromFolder } from "@/lib/getImagesFromFolder";
+
+export const metadata: Metadata = {
+  title: "Montering av drivhus – utført prosjekt",
+  description:
+    "Se et utført drivhusprosjekt med opparbeidet sokkel, montert konstruksjon og dokumentasjon gjennom ulike årstider.",
+  alternates: { canonical: "/prosjekter/drivhus" },
+  openGraph: {
+    title: "Montering av drivhus – utført prosjekt",
+    description: "Dokumentert arbeidsreferanse fra montering av drivhus og sokkel.",
+    url: "/prosjekter/drivhus",
+    images: [
+      {
+        url: "/images/prosjekter/drivhus/drivhus2.webp",
+        alt: "Ferdigstilt og opplyst drivhus på opparbeidet sokkel",
+      },
+    ],
+  },
+};
+
+const imageAlts = {
+  "drivhus1.webp": "Drivhus montert på tilpasset og opparbeidet sokkel",
+  "drivhus2.webp": "Ferdigstilt og opplyst drivhus på kveldstid",
+  "drivhus3.webp": "Frittstående drivhus med glassfelt og sort rammeverk",
+  "drivhus4.webp": "Ferdig drivhus dokumentert i vinterlandskap",
+};
 
 export default async function DrivhusProsjekt() {
   const images = await getImagesFromFolder("drivhus");
 
   return (
-    <section className="bg-neutral-900/40 min-h-screen pt-32 pb-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-white mb-8">Drivhus-prosjekt</h1>
-        <p className="text-neutral-300 mb-10">
-          Bilder fra drivhus – hentet fra /public/images/prosjekter/drivhus/
-        </p>
-
-        {images.length === 0 ? (
-          <p className="text-neutral-400">Ingen bilder funnet i mappen.</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {images.map((src, i) => (
-              <div
-                key={i}
-                className="relative overflow-hidden rounded-xl hover:scale-[1.02] transition-transform"
-              >
-                <Image
-                  src={src}
-                  alt={`Bilde ${i + 1}`}
-                  width={800}
-                  height={600}
-                  className="object-cover rounded-lg"
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
+    <ProjectGalleryPage
+      slug="drivhus"
+      eyebrow="Utemiljø · montering"
+      title="Drivhus tilpasset uteområdet"
+      intro="Et frittstående drivhus etablert på opparbeidet sokkel, med en tydelig konstruksjon som fungerer gjennom skiftende sesonger."
+      detail="Prosjektet omfatter grunnlaget for konstruksjonen og komplett montering. Bildene viser det ferdige drivhuset i dagslys, på kveldstid og under vinterforhold."
+      highlights={["Opparbeidet sokkel", "Montering av konstruksjon", "Ferdig dokumentasjon"]}
+      images={images}
+      imageAlts={imageAlts}
+      featuredImageName="drivhus2.webp"
+    />
   );
 }

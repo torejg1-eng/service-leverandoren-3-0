@@ -7,10 +7,11 @@ import Footer from "./footer";
 export default function ClientLayoutWrapper({ children }: { children: ReactNode }) {
   return (
     <>
+      <a href="#site-content" className="skip-link">Hopp til hovedinnhold</a>
       <Header />
-      <main style={{ minHeight: "calc(100dvh - var(--header-height) - 56px)" }}>
+      <div id="site-content" style={{ minHeight: "calc(100dvh - var(--header-height) - 56px)" }}>
         {children}
-      </main>
+      </div>
       <Footer />
     </>
   );

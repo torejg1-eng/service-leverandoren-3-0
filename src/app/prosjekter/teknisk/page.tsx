@@ -1,38 +1,46 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import ProjectGalleryPage from "@/app/components/ProjectGalleryPage";
 import { getImagesFromFolder } from "@/lib/getImagesFromFolder";
+
+export const metadata: Metadata = {
+  title: "Tekniske arbeider og spesialløsninger",
+  description:
+    "Se utvalgte tekniske arbeider og plassbygde løsninger, fra innbygging av utstyr til funksjonelle romtilpasninger.",
+  alternates: { canonical: "/prosjekter/teknisk" },
+  openGraph: {
+    title: "Tekniske arbeider og spesialløsninger",
+    description: "Dokumenterte tekniske og bygningsmessige arbeider og spesialtilpasninger.",
+    url: "/prosjekter/teknisk",
+    images: [
+      {
+        url: "/images/prosjekter/teknisk/teknisk2.webp",
+        alt: "Teknisk utstyr integrert i plassbygget veggløsning",
+      },
+    ],
+  },
+};
+
+const imageAlts = {
+  "teknisk1.webp": "Tilpasset innbygging av teknisk utstyr i vegg",
+  "teknisk2.webp": "Teknisk utstyr integrert i plassbygget veggløsning",
+  "teknisk5.webp": "Plassbygget hems med rekkverk og trappeløsning",
+  "teknisk6.webp": "Ferdig spesialrom med integrert hems og belysning",
+};
 
 export default async function TekniskProsjekt() {
   const images = await getImagesFromFolder("teknisk");
 
   return (
-    <section className="bg-neutral-900/40 min-h-screen pt-32 pb-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-white mb-8">Teknisk-prosjekt</h1>
-        <p className="text-neutral-300 mb-10">
-          Bilder fra tekniske installasjoner – hentet fra /public/images/prosjekter/teknisk/
-        </p>
-
-        {images.length === 0 ? (
-          <p className="text-neutral-400">Ingen bilder funnet i mappen.</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {images.map((src, i) => (
-              <div
-                key={i}
-                className="relative overflow-hidden rounded-xl hover:scale-[1.02] transition-transform"
-              >
-                <Image
-                  src={src}
-                  alt={`Bilde ${i + 1}`}
-                  width={800}
-                  height={600}
-                  className="object-cover rounded-lg"
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
+    <ProjectGalleryPage
+      slug="teknisk"
+      eyebrow="Teknisk · spesialtilpasning"
+      title="Tekniske arbeider som blir en del av rommet"
+      intro="Et utvalg bygningsmessige og tekniske løsninger der funksjon, innbygging og plassutnyttelse er planlagt som en helhet."
+      detail="Referansene viser både integrering av teknisk utstyr og plassbygde romløsninger. Fellesnevneren er praktiske tilpasninger utført etter forholdene på stedet."
+      highlights={["Bygningsmessig tilpasning", "Integrering av teknisk utstyr", "Plassbygde løsninger"]}
+      images={images}
+      imageAlts={imageAlts}
+      featuredImageName="teknisk2.webp"
+    />
   );
 }

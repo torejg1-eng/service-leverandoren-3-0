@@ -13,6 +13,7 @@ const routes = [
   "/prosjekter/mur",
   "/prosjekter/teknisk",
   "/innsikt",
+  "/innsikt/hvor-vanlig-er-feilregulerte-bygg",
   "/innsikt/avvik-til-tiltak",
   "/innsikt/sjekkliste-eiendomsdrift",
   "/innsikt/teknisk-tilsyn-enkel-modell",
@@ -23,11 +24,9 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   return routes.map((route) => ({
-    url: `https://www.service-leverandøren.no${route}`,
-    lastModified: now,
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : route === "/kontakt" ? 0.9 : 0.7,
+    url: `https://www.xn--service-leverandren-b8b.no${route}`,
+    changeFrequency: route === "" || route === "/innsikt" ? "weekly" : "monthly",
+    priority: route === "" ? 1 : route === "/kontakt" ? 0.9 : route.startsWith("/prosjekter/") || route.startsWith("/innsikt/") ? 0.65 : 0.8,
   }));
 }

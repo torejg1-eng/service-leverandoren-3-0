@@ -1,38 +1,52 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import ProjectGalleryPage from "@/app/components/ProjectGalleryPage";
 import { getImagesFromFolder } from "@/lib/getImagesFromFolder";
+
+export const metadata: Metadata = {
+  title: "Baderomsrehabilitering – utført prosjekt",
+  description:
+    "Se bilder fra rehabilitering av bad, fra klargjøring og flislegging til innredning og ferdige overflater.",
+  alternates: { canonical: "/prosjekter/bad" },
+  openGraph: {
+    title: "Baderomsrehabilitering – utført prosjekt",
+    description: "Dokumentert arbeidsreferanse fra komplett baderomsrehabilitering.",
+    url: "/prosjekter/bad",
+    images: [
+      {
+        url: "/images/prosjekter/bad/bad9.webp",
+        alt: "Ferdigstilt bad med mørke fliser og hvit innredning",
+      },
+    ],
+  },
+};
+
+const imageAlts = {
+  "bad0.webp": "Klargjort våtrom før flislegging",
+  "bad1.webp": "Mørke gulvfliser lagt med lyse detaljfelt",
+  "bad2.webp": "Flislagt dusjsone under baderomsrehabilitering",
+  "bad3.webp": "Presis flislegging rundt sluk og gulvdetaljer",
+  "bad4.webp": "Innbyggingssisterne integrert i flislagt vegg",
+  "bad5.webp": "Sammenhengende flisarbeid på gulv og vegger",
+  "bad6.webp": "Montering av baderomsinnredning og servant",
+  "bad7.webp": "Baderom i sluttfasen med innredning på plass",
+  "bad8.webp": "Badekar montert mot mørke, flislagte overflater",
+  "bad9.webp": "Ferdigstilt bad med badekar, innredning og vaskesone",
+};
 
 export default async function BadProsjekt() {
   const images = await getImagesFromFolder("bad");
 
   return (
-    <section className="bg-neutral-900/40 min-h-screen pt-32 pb-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-white mb-8">Bad-prosjekt</h1>
-        <p className="text-neutral-300 mb-10">
-          Bilder fra badet – hentet fra /public/images/prosjekter/bad/
-        </p>
-
-        {images.length === 0 ? (
-          <p className="text-neutral-400">Ingen bilder funnet i mappen.</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {images.map((src, i) => (
-              <div
-                key={i}
-                className="relative overflow-hidden rounded-xl hover:scale-[1.02] transition-transform"
-              >
-                <Image
-                  src={src}
-                  alt={`Bilde ${i + 1}`}
-                  width={800}
-                  height={600}
-                  className="object-cover rounded-lg"
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
+    <ProjectGalleryPage
+      slug="bad"
+      eyebrow="Bad · rehabilitering"
+      title="Bad bygget opp fra grunnen"
+      intro="En komplett baderomsrehabilitering dokumentert fra klargjort våtrom til ferdige, funksjonelle overflater."
+      detail="Bildeserien viser utviklingen gjennom flisarbeid, tekniske detaljer og montering av innredning. Resultatet er et helhetlig bad der materialvalg og utførelse henger sammen."
+      highlights={["Klargjøring av våtrom", "Flislegging og detaljarbeid", "Montering og ferdigstilling"]}
+      images={images}
+      imageAlts={imageAlts}
+      featuredImageName="bad9.webp"
+    />
   );
 }

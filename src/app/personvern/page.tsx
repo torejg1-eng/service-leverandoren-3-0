@@ -1,182 +1,88 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Personvernerklæring",
+  description: "Slik behandler SERVICELEVERANDØREN AS personopplysninger når du besøker nettstedet eller tar kontakt.",
+  alternates: { canonical: "/personvern" },
+  robots: { index: true, follow: true },
+};
 
 export default function PersonvernPage() {
   return (
-    <main className="min-h-screen px-4 md:px-12 pt-[calc(var(--header-height)+24px)] pb-16">
-      <section className="max-w-4xl mx-auto">
-        <p className="text-emerald-300 font-semibold tracking-wide">Personvern</p>
-        <h1 className="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight">
-          Personvernerklæring
-        </h1>
-        <p className="mt-5 text-neutral-300 text-lg leading-relaxed">
-          Service Leverandøren AS tar personvern på alvor. Her forklarer vi hvilke
-          opplysninger vi kan samle inn, hvorfor vi gjør det, og hvilke rettigheter du har.
-        </p>
-
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-3">
-          <Info title="Behandlingsansvarlig" value="Service Leverandøren AS" />
-          <Info title="Kontakt" value="post@serviceleverandøren.no" />
-          <Info title="Telefon" value="+47 469 25 236" />
+    <main className="bg-[#f3f4ef] pt-[var(--header-height)]">
+      <header className="dark-grid text-white">
+        <div className="site-shell py-14 sm:py-20">
+          <p className="eyebrow eyebrow-on-dark">Juridisk informasjon</p>
+          <h1 className="mt-7 max-w-4xl text-5xl font-extrabold leading-[0.96] tracking-[-0.055em] sm:text-7xl">Personvernerklæring</h1>
+          <p className="lead-copy mt-7 text-white/62">
+            Her forklarer vi hvilke personopplysninger vi behandler, hvorfor vi gjør det og hvordan du kan bruke rettighetene dine.
+          </p>
+          <p className="mt-8 font-mono text-[0.65rem] font-bold uppercase tracking-[0.14em] text-white/42">Sist oppdatert 2. september 2026</p>
         </div>
+      </header>
 
-        {/* Innhold */}
-        <div className="mt-12 space-y-10">
-          <Block title="1. Hvilke data vi samler inn">
-            <ul className="list-disc pl-5 space-y-2 text-neutral-300 leading-relaxed">
-              <li>
-                <span className="font-semibold text-neutral-100">Kontaktopplysninger</span>{" "}
-                (navn, e-post, telefon) når du tar kontakt via skjema, e-post eller telefon.
-              </li>
-              <li>
-                <span className="font-semibold text-neutral-100">Oppdragsinformasjon</span>{" "}
-                (adresse, byggtype, ønsket tjeneste) når det er nødvendig for å kunne gi tilbud eller utføre oppdrag.
-              </li>
-              <li>
-                <span className="font-semibold text-neutral-100">Tekniske data</span>{" "}
-                (IP-adresse, nettlesertype, besøk på sider) kan forekomme i forbindelse med drift, sikkerhet og enkel statistikk.
-              </li>
+      <div className="site-shell grid gap-12 py-14 lg:grid-cols-[16rem_1fr] lg:py-20">
+        <aside className="lg:sticky lg:top-[calc(var(--header-height)+2rem)] lg:self-start">
+          <p className="font-mono text-[0.66rem] font-bold uppercase tracking-[0.15em] text-[#0d7654]">Behandlingsansvarlig</p>
+          <p className="mt-4 font-bold">SERVICELEVERANDØREN AS</p>
+          <p className="mt-2 text-sm leading-6 text-[#5b6861]">Org.nr. 936 026 087<br />Åsa-Tors vei 18A<br />1746 Skjeberg</p>
+          <a href="mailto:post@serviceleverandøren.no" className="mt-5 block break-all text-sm font-bold text-[#0d7654]">post@serviceleverandøren.no</a>
+          <a href="tel:+4746925236" className="mt-2 block text-sm font-bold text-[#0d7654]">+47 469 25 236</a>
+        </aside>
+
+        <article className="prose-premium max-w-3xl">
+          <PrivacySection number="01" title="Opplysninger vi behandler">
+            <p>Når du sender kontaktskjema, e-post eller ringer oss, kan vi behandle navn, virksomhet, e-postadresse, telefonnummer og opplysninger du selv skriver om behovet eller oppdraget.</p>
+            <p>Når nettstedet besøkes, kan hosting- og sikkerhetssystemer registrere tekniske data som IP-adresse, tidspunkt, nettlesertype og forespurt side. Dette brukes for å levere og beskytte nettstedet.</p>
+          </PrivacySection>
+
+          <PrivacySection number="02" title="Formål og behandlingsgrunnlag">
+            <ul>
+              <li>Besvare henvendelser og gjøre avklaringer før en eventuell avtale.</li>
+              <li>Planlegge, levere og følge opp avtalte oppdrag.</li>
+              <li>Oppfylle lovpålagte krav, blant annet dokumentasjon og regnskap.</li>
+              <li>Ivareta berettigede interesser knyttet til sikker og stabil nettdrift.</li>
             </ul>
-          </Block>
+            <p>Grunnlaget er normalt tiltak før avtale eller oppfyllelse av avtale, rettslig plikt eller vår berettigede interesse. Samtykke brukes der loven krever det.</p>
+          </PrivacySection>
 
-          <Block title="2. Hvorfor vi samler inn data (formål)">
-            <ul className="list-disc pl-5 space-y-2 text-neutral-300 leading-relaxed">
-              <li>Besvare henvendelser og gi tilbud.</li>
-              <li>Planlegge og gjennomføre oppdrag.</li>
-              <li>Fakturering og dokumentasjon knyttet til leveranse.</li>
-              <li>Sikre stabil drift og forbedre nettsidens innhold.</li>
-            </ul>
-          </Block>
+          <PrivacySection number="03" title="Leverandører og deling">
+            <p>Kontaktskjemaet sendes via <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noreferrer">Formspree</a>. Nettsiden driftes hos <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noreferrer">Vercel</a>. Disse leverandørene kan behandle opplysninger for å levere sine tjenester.</p>
+            <p>Vi kan også dele nødvendige opplysninger med regnskapsfører, betalingsleverandør eller fagpartnere når det er nødvendig for en avtalt leveranse eller lovpålagt plikt. Vi selger ikke personopplysninger.</p>
+          </PrivacySection>
 
-          <Block title="3. Behandlingsgrunnlag">
-            <p className="text-neutral-300 leading-relaxed">
-              Vi behandler personopplysninger når det er nødvendig for å:
-            </p>
-            <ul className="mt-3 list-disc pl-5 space-y-2 text-neutral-300 leading-relaxed">
-              <li>
-                oppfylle en avtale eller gjennomføre tiltak på forespørsel før avtale inngås
-              </li>
-              <li>oppfylle rettslige forpliktelser (f.eks. regnskapsplikt)</li>
-              <li>ivareta berettigede interesser (f.eks. sikkerhet og forbedring av nettsiden)</li>
-              <li>samtykke, der dette kreves (f.eks. enkelte typer cookies)</li>
-            </ul>
-          </Block>
+          <PrivacySection number="04" title="Lagring og sletting">
+            <p>Opplysninger lagres bare så lenge de er nødvendige for formålet. Henvendelser som ikke blir til et oppdrag slettes når de ikke lenger trengs. Opplysninger knyttet til avtaler og fakturering oppbevares så lenge bokføringsreglene eller andre plikter krever det.</p>
+          </PrivacySection>
 
-          <Block title="4. Deling av opplysninger">
-            <p className="text-neutral-300 leading-relaxed">
-              Vi deler ikke personopplysninger med andre enn det som er nødvendig for å levere
-              tjenesten. Det kan inkludere:
-            </p>
-            <ul className="mt-3 list-disc pl-5 space-y-2 text-neutral-300 leading-relaxed">
-              <li>
-                leverandører av IT-/driftstjenester (for eksempel webhosting) for stabil og sikker drift
-              </li>
-              <li>
-                regnskapsfører/banksystemer ved fakturering og betaling (når relevant)
-              </li>
-            </ul>
-            <p className="mt-3 text-neutral-300 leading-relaxed">
-              Vi deler aldri opplysninger for markedsføring på vegne av tredjeparter.
-            </p>
-          </Block>
+          <PrivacySection number="05" title="Informasjonskapsler">
+            <p>Nettstedet er per sist oppdaterte versjon ikke satt opp med markedsføringscookies. Tekniske funksjoner hos hosting-leverandøren kan likevel bruke eller lagre nødvendig informasjon for sikkerhet og levering. Hvis analyse eller markedsføring blir tatt i bruk senere, skal erklæringen og eventuell samtykkeløsning oppdateres først.</p>
+          </PrivacySection>
 
-          <Block title="5. Lagringstid">
-            <p className="text-neutral-300 leading-relaxed">
-              Vi lagrer personopplysninger så lenge det er nødvendig for formålet, eller så lenge
-              vi er pålagt å lagre dem (for eksempel regnskapsdokumentasjon). Opplysninger knyttet
-              til henvendelser slettes normalt når de ikke lenger er relevante.
-            </p>
-          </Block>
+          <PrivacySection number="06" title="Rettighetene dine">
+            <p>Du kan be om innsyn, retting, sletting, begrensning eller dataportabilitet når vilkårene er oppfylt. Du kan også protestere mot behandling basert på berettiget interesse og trekke tilbake et samtykke.</p>
+            <p>Ta kontakt med oss dersom du vil bruke en rettighet. Du kan også klage til <a href="https://www.datatilsynet.no/om-datatilsynet/kontakt-oss/klage-til-datatilsynet/" target="_blank" rel="noreferrer">Datatilsynet</a>.</p>
+          </PrivacySection>
 
-          <Block title="6. Cookies og statistikk">
-            <p className="text-neutral-300 leading-relaxed">
-              Nettsiden kan bruke cookies for grunnleggende funksjonalitet, sikkerhet og enkel statistikk.
-              Cookies er små tekstfiler som lagres i nettleseren din.
-            </p>
-            <ul className="mt-3 list-disc pl-5 space-y-2 text-neutral-300 leading-relaxed">
-              <li>
-                <span className="font-semibold text-neutral-100">Nødvendige cookies</span>{" "}
-                brukes for at nettsiden skal fungere.
-              </li>
-              <li>
-                <span className="font-semibold text-neutral-100">Statistikk</span>{" "}
-                kan brukes for å forstå bruksmønster og forbedre innhold (for eksempel via analyseverktøy).
-              </li>
-            </ul>
-            <p className="mt-3 text-neutral-300 leading-relaxed">
-              Du kan blokkere eller slette cookies i nettleseren din. Vær oppmerksom på at enkelte funksjoner
-              kan slutte å fungere hvis cookies deaktiveres.
-            </p>
-          </Block>
-
-          <Block title="7. Dine rettigheter">
-            <p className="text-neutral-300 leading-relaxed">
-              Du har rett til å be om innsyn, retting eller sletting av personopplysninger, og i visse tilfeller
-              begrensning av behandlingen. Du kan også protestere på behandling som skjer basert på berettiget interesse.
-            </p>
-            <p className="mt-3 text-neutral-300 leading-relaxed">
-              Ta kontakt med oss dersom du ønsker å bruke dine rettigheter.
-            </p>
-          </Block>
-
-          <Block title="8. Kontakt">
-            <p className="text-neutral-300 leading-relaxed">
-              Har du spørsmål om personvern, eller ønsker innsyn/sletting, kontakt oss:
-            </p>
-
-            <div className="mt-4 rounded-2xl border border-white/15 bg-neutral-900/30 p-5">
-              <p className="text-neutral-200">
-                <span className="text-white/70">E-post:</span>{" "}
-                <a className="hover:text-emerald-200 transition" href="mailto:post@serviceleverandøren.no">
-                  post@serviceleverandøren.no
-                </a>
-              </p>
-              <p className="mt-2 text-neutral-200">
-                <span className="text-white/70">Telefon:</span>{" "}
-                <a className="hover:text-emerald-200 transition" href="tel:+4746925236">
-                  +47 469 25 236
-                </a>
-              </p>
-            </div>
-
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/kontakt"
-                className="inline-flex items-center justify-center rounded-xl bg-emerald-400 px-5 py-3 font-semibold text-neutral-900 hover:bg-emerald-300 transition"
-              >
-                Gå til kontaktsiden
-              </Link>
-              <Link
-                href="/"
-                className="inline-flex items-center justify-center rounded-xl border border-white/20 px-5 py-3 font-semibold text-neutral-100 hover:border-emerald-400/60 hover:text-emerald-200 transition"
-              >
-                Til forsiden
-              </Link>
-            </div>
-
-            <p className="mt-6 text-xs text-white/50">
-              Sist oppdatert: 03.02.2026
-            </p>
-          </Block>
-        </div>
-      </section>
+          <section className="border border-[#101a16]/15 bg-white p-7 sm:p-9">
+            <p className="font-mono text-[0.66rem] font-bold uppercase tracking-[0.15em] text-[#0d7654]">Spørsmål om personvern</p>
+            <h2 className="mt-4 text-2xl font-extrabold">Kontakt oss direkte</h2>
+            <p className="mt-4">Skriv til <a href="mailto:post@serviceleverandøren.no">post@serviceleverandøren.no</a> eller ring <a href="tel:+4746925236">+47 469 25 236</a>.</p>
+            <Link href="/kontakt" className="button-primary mt-6 no-underline">Gå til kontaktsiden</Link>
+          </section>
+        </article>
+      </div>
     </main>
   );
 }
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function PrivacySection({ number, title, children }: { number: string; title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-2xl border border-white/10 bg-neutral-900/20 p-6 md:p-8">
-      <h2 className="text-xl md:text-2xl font-bold tracking-tight">{title}</h2>
-      <div className="mt-4">{children}</div>
+    <section className="mb-12 border-t border-[#101a16]/18 pt-7">
+      <p className="font-mono text-[0.66rem] font-bold uppercase tracking-[0.15em] text-[#0d7654]">{number}</p>
+      <h2 className="mt-4 text-2xl font-extrabold sm:text-3xl">{title}</h2>
+      <div className="mt-5 space-y-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">{children}</div>
     </section>
-  );
-}
-
-function Info({ title, value }: { title: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-white/15 bg-neutral-900/40 p-4">
-      <p className="text-xs uppercase tracking-wide text-neutral-400">{title}</p>
-      <p className="mt-1 text-sm md:text-base font-semibold text-neutral-100">{value}</p>
-    </div>
   );
 }
