@@ -1,28 +1,24 @@
+import type { Metadata } from "next";
 import PageTemplate from "../components/PageTemplate";
+
+export const metadata: Metadata = {
+  title: "Nordic Smart nettbutikk",
+  description: "Besøk Nordic Smart for Hydro Shield og utvalgte smarte produkter til båt og hjem.",
+  alternates: { canonical: "/butikk" },
+};
 
 export default function NettbutikkPage() {
   return (
     <PageTemplate
       title="Nordic Smart"
-      subtitle="Fremtidens løsninger innen AI, smarthus og energieffektivitet."
-      buttonText="Utforsk produkter"
+      subtitle="Nettbutikken vår for nøye utvalgte produkter til båt og hjem. Hydro Shield er utviklet for bedre planing, stabilitet og beskyttelse rundt propellen."
+      buttonText="Besøk Nordic Smart"
       buttonHref="https://nordicsmart.eu"
-      bgImage="/images/nordicsmart.webp"
+      bgImage="/rustfritt.webp"
       services={[
-        {
-          title: "AI-optimalisering",
-          desc: "Bli synlig i AI-søk og få flere kunder med våre synlighetsverktøy.",
-          href: "/butikk", // 👉 lenke til nettbutikken
-        },
-        {
-          title: "Hydro Shield",
-          desc: "Beskytt propellen og kom raskere i plan med vårt unike produkt.",
-          href: "/butikk", // 👉 lenke til nettbutikken
-        },
-        {
-          title: "Smarthus",
-          desc: "Energieffektive og brukervennlige løsninger for et smartere hjem.",
-        },
+        { title: "Hydro Shield", desc: "Modeller tilpasset ulike båtstørrelser og motoroppsett, med veiledning før kjøp." },
+        { title: "Personlig hjelp", desc: "Usikker på modell eller montering? Ta kontakt med opplysninger om båt og motor." },
+        { title: "Nordisk nettbutikk", desc: "Egen nettbutikk med produktinformasjon, monteringsveiledning og sikker betaling." },
       ]}
     />
   );
