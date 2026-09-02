@@ -1,4 +1,3 @@
-// === START: src/app/page.tsx ===
 import Link from "next/link";
 import {
   ArrowRight,
@@ -81,9 +80,9 @@ export default function HomePage() {
               <Mail className="h-4 w-4" />{" "}
               <a
                 className="hover:text-emerald-200 transition"
-                href="mailto:post@service-leverandoren.no"
+                href="mailto:post@serviceleverandøren.no"
               >
-                post@service-leverandoren.no
+                post@serviceleverandøren.no
               </a>
             </span>
             <span className="flex items-center gap-2">
@@ -321,4 +320,3 @@ function formatDate(iso: string) {
   const [y, m, d] = iso.split("-");
   return `${d}.${m}.${y}`;
 }
-// === END: src/app/page.tsx ===
