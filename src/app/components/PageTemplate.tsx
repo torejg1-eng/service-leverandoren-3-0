@@ -1,144 +1,84 @@
-// === START FIXED: src/app/components/PageTemplate.tsx ===
-"use client";
-
-import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
 
-type ServiceItem = {
-  title: string;
-  desc: string;
-  href?: string; // ✅ gjør kortet klikkbart når satt
-};
+type ServiceItem = { title: string; desc: string; href?: string };
 
 interface PageTemplateProps {
   title: string;
   subtitle: string;
   buttonText: string;
-  onButtonClick?: () => void;
-  buttonHref?: string; // ✅ lenke for hovedknappen
-  bgColor?: string; // ✅ fallback-bakgrunn når bgImage mangler
-  bgImage?: string; // ✅ valgfritt heltebilde (optimalisert via next/image)
+  buttonHref?: string;
+  bgColor?: string;
+  bgImage?: string;
   services?: ServiceItem[];
 }
 
-const PageTemplate: React.FC<PageTemplateProps> = ({
+export default function PageTemplate({
   title,
   subtitle,
   buttonText,
-  onButtonClick,
-  buttonHref,
-  bgColor = "bg-gray-700",
+  buttonHref = "/kontakt",
   bgImage,
   services = [],
-}) => {
-  const isDark =
-    bgColor.includes("gray") ||
-    bgColor.includes("slate") ||
-    bgColor.includes("neutral") ||
-    bgColor.includes("black") ||
-    bgColor.includes("zinc") ||
-    bgColor.includes("stone");
-
-  const titleColor = isDark ? "text-gray-100 drop-shadow-md" : "text-gray-900";
-  const subtitleColor = isDark ? "text-gray-200 drop-shadow-sm" : "text-gray-700";
-
-  const ButtonEl = () => {
-    if (buttonHref) {
-      return (
-        <Link
-          href={buttonHref}
-          className="inline-block mt-6 bg-amber-500 hover:bg-amber-600 text-black font-semibold py-2 px-5 rounded shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400"
-        >
-          {buttonText}
-        </Link>
-      );
-    }
-    return (
-      <button
-        type="button"
-        onClick={onButtonClick}
-        className="mt-6 bg-amber-500 hover:bg-amber-600 text-black font-semibold py-2 px-5 rounded shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400"
-      >
-        {buttonText}
-      </button>
-    );
-  };
+}: PageTemplateProps) {
+  const external = buttonHref.startsWith("http");
 
   return (
-    <div className="pt-20">
-      {/* HERO */}
-      <section className={`relative py-20 text-center overflow-hidden ${bgColor}`}>
-        {/* Bakgrunnsbilde (valgfritt) */}
-        {bgImage && (
-          <>
-            <Image
-              src={bgImage}
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover opacity-35"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
-          </>
+    <main className="min-h-screen pt-[var(--header-height)]">
+      <section className="relative isolate min-h-[430px] overflow-hidden border-b border-white/10">
+        {bgImage ? (
+          <Image src={bgImage} alt="" fill priority sizes="100vw" className="object-cover" />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-950 via-neutral-950 to-neutral-900" />
         )}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/72 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080b0a] via-transparent to-transparent" />
 
-        {/* Innhold */}
-        <div className="relative z-10 mx-auto max-w-5xl px-4">
-          <h1 className={`text-4xl md:text-5xl font-bold ${titleColor}`}>{title}</h1>
-          <p className={`mt-3 text-lg md:text-xl ${subtitleColor}`}>{subtitle}</p>
-          <ButtonEl />
+        <div className="relative mx-auto flex min-h-[430px] max-w-7xl items-end px-4 pb-14 pt-20 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">Service Leverandøren AS</p>
+            <h1 className="text-balance text-4xl font-extrabold leading-[1.08] tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl">{title}</h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-200 sm:text-xl">{subtitle}</p>
+            <Link
+              href={buttonHref}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noreferrer" : undefined}
+              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-amber-400 px-5 py-3 font-bold text-neutral-950 shadow-lg shadow-amber-950/20 transition hover:bg-amber-300"
+            >
+              {buttonText}<ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
-
-        {/* Dekorlinje nederst */}
-        <div className="absolute bottom-0 left-0 w-full h-2 bg-amber-400" />
       </section>
 
-      {/* SERVICES */}
       {services.length > 0 && (
-        <section className="bg-gray-50 py-12 border-t-4 border-amber-400">
-          <h2 className="text-2xl font-semibold text-center text-gray-800 mb-8">
-            Våre tjenester
-          </h2>
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-            {services.map((s, i) => {
-              const CardInner = (
-                <>
-                  <h3 className="font-bold text-gray-800 text-lg mb-2">{s.title}</h3>
-                  <p className="text-gray-600">{s.desc}</p>
-                </>
-              );
-
-              // 🔗 Kort med lenke
-              if (s.href) {
-                return (
-                  <Link
-                    key={i}
-                    href={s.href}
-                    className="block bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg hover:-translate-y-1 transition focus:outline-none focus:ring-2 focus:ring-amber-400"
-                  >
-                    {CardInner}
-                  </Link>
+        <section className="border-b border-white/10 bg-[#0c100e] py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-2xl">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">Kompetanse og leveranse</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-white">Dette kan vi hjelpe deg med</h2>
+            </div>
+            <div className="mt-9 grid gap-5 md:grid-cols-3">
+              {services.map((service) => {
+                const content = (
+                  <>
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-400/10 text-emerald-300"><Check size={18} aria-hidden="true" /></div>
+                    <h3 className="mt-5 text-xl font-bold text-white">{service.title}</h3>
+                    <p className="mt-3 leading-7 text-neutral-400">{service.desc}</p>
+                    {service.href && <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-emerald-300">Les mer <ArrowRight size={15} aria-hidden="true" /></span>}
+                  </>
                 );
-              }
-
-              // 🧩 Vanlig kort uten lenke
-              return (
-                <div
-                  key={i}
-                  className="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg hover:-translate-y-1 transition"
-                >
-                  {CardInner}
-                </div>
-              );
-            })}
+                return service.href ? (
+                  <Link key={service.title} href={service.href} className="rounded-2xl border border-white/10 bg-white/[0.035] p-6 transition hover:-translate-y-1 hover:border-emerald-400/35 hover:bg-white/[0.055]">{content}</Link>
+                ) : (
+                  <article key={service.title} className="rounded-2xl border border-white/10 bg-white/[0.035] p-6">{content}</article>
+                );
+              })}
+            </div>
           </div>
         </section>
       )}
-    </div>
+    </main>
   );
-};
-
-export default PageTemplate;
-// === END FIXED: src/app/components/PageTemplate.tsx ===
+}
