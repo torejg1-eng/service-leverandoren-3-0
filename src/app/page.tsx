@@ -46,21 +46,21 @@ export default function HomePage() {
       >
         {/* Bakgrunnsbilde + overlay */}
         <div className="absolute inset-0">
-          <div className="h-full w-full bg-[url('/images/hero-stue.webp')] bg-cover bg-center opacity-20" />
+          <div className="h-full w-full bg-[url('/images/prosjekter/forside-prosjekt.webp')] bg-cover bg-center opacity-35" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/65 to-neutral-950" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:pb-20">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
           <p className="text-emerald-300 font-semibold tracking-wide">
-            Optimalisering • Eiendomsdrift • Prosjekter
+            EIENDOMSDRIFT · ENERGI · PROSJEKT
           </p>
 
           <h1 className="mt-4 text-4xl sm:text-6xl font-extrabold leading-tight tracking-tight">
-            Optimalisering av bygg som{" "}
+            Bedre kontroll på bygg, drift og{" "}
             <span className="bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
-              reduserer kostnader
+              energikostnader
             </span>{" "}
-            og gir bedre drift
+            – fra tiltak til dokumentert resultat
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg text-neutral-200 leading-relaxed">
@@ -95,7 +95,7 @@ export default function HomePage() {
               href="/kontakt"
               className="inline-flex items-center justify-center rounded-xl bg-amber-500 px-5 py-3 font-semibold text-neutral-900 hover:bg-amber-400 transition"
             >
-              Be om gjennomgang
+              Be om en uforpliktende befaring
             </Link>
             <Link
               href="/optimalisering"
@@ -143,8 +143,8 @@ export default function HomePage() {
             />
             <ServiceCard
               icon={<Building2 className="h-6 w-6" />}
-              title="Prosjekter"
-              desc="Utførte jobber og dokumentasjon. Prosjekt/ombygging tas ved forespørsel og behov."
+              title="Prosjektgjennomføring"
+              desc="Planlegging, koordinering og utførelse av ombygging og tekniske tiltak – med tydelig ansvar og dokumentasjon."
               href="/prosjekter"
               accent="emerald"
             />
