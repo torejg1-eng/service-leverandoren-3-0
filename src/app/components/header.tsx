@@ -41,13 +41,13 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 h-[var(--header-height)] border-b border-white/10 bg-[#07100d]/95 text-white backdrop-blur-xl">
       <div className="site-shell flex h-full items-center justify-between gap-5">
-        <Link href="/" onClick={() => setMenuOpen(false)} aria-label="Service Leverandøren AS – gå til forsiden" className="group shrink-0 leading-none">
+        <Link href="/" onClick={() => setMenuOpen(false)} className="group shrink-0 leading-none">
           <span className="block text-[1.03rem] font-extrabold tracking-[-0.04em] sm:text-xl">
             <span className="text-[#38d39f] transition-colors group-hover:text-white">Service</span>{" "}
             <span>Leverandøren</span>
-            <span className="ml-1.5 text-[0.62rem] font-bold tracking-[0.12em] text-white/45">AS</span>
+            <span className="ml-1.5 text-[0.62rem] font-bold tracking-[0.12em] text-white/60">AS</span>
           </span>
-          <span className="mt-1.5 hidden font-mono text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-white/42 sm:block">
+          <span className="mt-1.5 hidden font-mono text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-white/60 sm:block">
             Drift · energi · prosjekt
           </span>
         </Link>

@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.35fr_0.9fr_1fr]">
           <div>
             <p className="text-2xl font-extrabold tracking-[-0.045em] text-white">
-              <span className="text-[#38d39f]">Service</span> Leverandøren <span className="text-xs tracking-widest text-white/35">AS</span>
+              <span className="text-[#38d39f]">Service</span> Leverandøren <span className="text-xs tracking-widest text-white/60">AS</span>
             </p>
             <p className="mt-5 max-w-md text-sm leading-7 text-white/55">
               Eiendomsdrift, energioptimalisering og prosjektgjennomføring for bygg og eiendommer i Østfold.
@@ -45,7 +45,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} SERVICELEVERANDØREN AS · Org.nr. 936 026 087</p>
           <div className="flex flex-wrap gap-5">
             <Link className="hover:text-white" href="/om-oss">Om oss</Link>
