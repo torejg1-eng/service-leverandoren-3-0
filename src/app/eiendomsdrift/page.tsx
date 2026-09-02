@@ -1,5 +1,5 @@
 // === START: src/app/eiendomsdrift/page.tsx ===
-import Link from "next/link";
+import type { Metadata } from "next";\nimport Link from "next/link";\n\nexport const metadata: Metadata = {\n  title: "Eiendomsdrift og teknisk tilsyn i Østfold",\n  description: "Fast eiendomsdrift, teknisk tilsyn, byggservice og tydelig avviksrapportering for næringsbygg og sameier.",\n  alternates: { canonical: "/eiendomsdrift" },\n};
 
 const insights = [
   {
