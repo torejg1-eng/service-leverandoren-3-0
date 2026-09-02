@@ -1,5 +1,12 @@
 // === START: src/app/optimalisering/page.tsx ===
-import type { Metadata } from "next";\nimport Link from "next/link";\n\nexport const metadata: Metadata = {\n  title: "Energioptimalisering av bygg i Østfold",\n  description: "Kartlegging og optimalisering av energi, ventilasjon, inneklima og teknisk drift i eksisterende næringsbygg.",\n  alternates: { canonical: "/optimalisering" },\n};
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Energioptimalisering av bygg i Østfold",
+  description: "Kartlegging og optimalisering av energi, ventilasjon, inneklima og teknisk drift i eksisterende næringsbygg.",
+  alternates: { canonical: "/optimalisering" },
+};
 
 export default function OptimaliseringPage() {
   return (
