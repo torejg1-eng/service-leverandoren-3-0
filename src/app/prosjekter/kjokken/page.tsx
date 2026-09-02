@@ -2,14 +2,14 @@ import Image from "next/image";
 import { getImagesFromFolder } from "@/lib/getImagesFromFolder";
 
 export default async function kjokkenProsjekt() {
-  const images = await getImagesFromFolder("kjokken");
+  const images = await getImagesFromFolder("Kjokken");
 
   return (
     <section className="bg-neutral-900/40 min-h-screen pt-32 pb-16">
       <div className="max-w-7xl mx-auto px-4">
         <h1 className="text-4xl font-bold text-white mb-8">Kjøkken-prosjekt</h1>
         <p className="text-neutral-300 mb-10">
-          Bilder fra kjøkken – hentet fra /public/images/prosjekter/kjokken/
+          Bilder fra kjøkken – hentet fra /public/images/prosjekter/Kjokken/
         </p>
 
         {images.length === 0 ? (
