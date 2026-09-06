@@ -38,7 +38,7 @@ export default function Footer() {
             <h2 className="font-mono text-[0.7rem] font-bold uppercase tracking-[0.16em] text-white">Kontakt</h2>
             <ul className="mt-5 space-y-4 text-sm">
               <li><a className="flex items-center gap-3 transition hover:text-[#38d39f]" href="tel:+4746925236"><Phone size={16} aria-hidden="true" />+47 469 25 236</a></li>
-              <li><a className="flex items-center gap-3 break-all transition hover:text-[#38d39f]" href="mailto:post@serviceleverandøren.no"><Mail size={16} aria-hidden="true" />post@serviceleverandøren.no</a></li>
+              <li><a className="flex items-center gap-3 break-all transition hover:text-[#38d39f]" href="mailto:post@service-leverandøren.no"><Mail size={16} aria-hidden="true" />post@service-leverandøren.no</a></li>
               <li className="flex items-start gap-3 text-white/50"><MapPin size={16} aria-hidden="true" className="mt-0.5 shrink-0" />Åsa-Tors vei 18A, 1746 Skjeberg</li>
             </ul>
             <Link href="/kontakt" className="mt-6 inline-flex border-b border-[#38d39f] pb-1 text-sm font-bold text-[#38d39f]">Ta kontakt →</Link>

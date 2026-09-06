@@ -50,7 +50,7 @@ const structuredData = {
       name: "Service Leverandøren",
       legalName: "SERVICELEVERANDØREN AS",
       url: "https://www.service-leverandøren.no",
-      email: "post@serviceleverandøren.no",
+      email: "post@service-leverandøren.no",
       telephone: "+4746925236",
       taxID: "936026087",
       address: {
@@ -71,7 +71,7 @@ const structuredData = {
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+4746925236",
-        email: "post@serviceleverandøren.no",
+        email: "post@service-leverandøren.no",
         contactType: "customer service",
         availableLanguage: ["Norwegian"],
       },

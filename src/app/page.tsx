@@ -350,7 +350,7 @@ export default function HomePage() {
           <div className="flex flex-col gap-3 lg:min-w-72">
             <Link href="/kontakt" className="button-primary">Be om befaring <ArrowRight size={18} aria-hidden="true" /></Link>
             <a href="tel:+4746925236" className="button-secondary-dark"><Phone size={17} aria-hidden="true" /> +47 469 25 236</a>
-            <a href="mailto:post@serviceleverandøren.no" className="inline-flex items-center justify-center gap-2 pt-2 text-xs font-semibold text-white/50 hover:text-white"><Mail size={14} aria-hidden="true" /> post@serviceleverandøren.no</a>
+            <a href="mailto:post@service-leverandøren.no" className="inline-flex items-center justify-center gap-2 pt-2 text-xs font-semibold text-white/50 hover:text-white"><Mail size={14} aria-hidden="true" /> post@service-leverandøren.no</a>
           </div>
         </div>
       </section>

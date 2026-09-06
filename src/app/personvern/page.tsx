@@ -27,7 +27,7 @@ export default function PersonvernPage() {
           <p className="font-mono text-[0.66rem] font-bold uppercase tracking-[0.15em] text-[#0d7654]">Behandlingsansvarlig</p>
           <p className="mt-4 font-bold">SERVICELEVERANDØREN AS</p>
           <p className="mt-2 text-sm leading-6 text-[#5b6861]">Org.nr. 936 026 087<br />Åsa-Tors vei 18A<br />1746 Skjeberg</p>
-          <a href="mailto:post@serviceleverandøren.no" className="mt-5 block break-all text-sm font-bold text-[#0d7654]">post@serviceleverandøren.no</a>
+          <a href="mailto:post@service-leverandøren.no" className="mt-5 block break-all text-sm font-bold text-[#0d7654]">post@service-leverandøren.no</a>
           <a href="tel:+4746925236" className="mt-2 block text-sm font-bold text-[#0d7654]">+47 469 25 236</a>
         </aside>
 
@@ -68,7 +68,7 @@ export default function PersonvernPage() {
           <section className="border border-[#101a16]/15 bg-white p-7 sm:p-9">
             <p className="font-mono text-[0.66rem] font-bold uppercase tracking-[0.15em] text-[#0d7654]">Spørsmål om personvern</p>
             <h2 className="mt-4 text-2xl font-extrabold">Kontakt oss direkte</h2>
-            <p className="mt-4">Skriv til <a href="mailto:post@serviceleverandøren.no">post@serviceleverandøren.no</a> eller ring <a href="tel:+4746925236">+47 469 25 236</a>.</p>
+            <p className="mt-4">Skriv til <a href="mailto:post@service-leverandøren.no">post@service-leverandøren.no</a> eller ring <a href="tel:+4746925236">+47 469 25 236</a>.</p>
             <Link href="/kontakt" className="button-primary mt-6 no-underline">Gå til kontaktsiden</Link>
           </section>
         </article>

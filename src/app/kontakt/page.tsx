@@ -31,7 +31,7 @@ export default function KontaktPage() {
 
             <div className="mt-10 border-t border-white/12">
               <ContactRow icon={<Phone size={18} aria-hidden="true" />} label="Telefon" href="tel:+4746925236" value="+47 469 25 236" />
-              <ContactRow icon={<Mail size={18} aria-hidden="true" />} label="E-post" href="mailto:post@serviceleverandøren.no" value="post@serviceleverandøren.no" />
+              <ContactRow icon={<Mail size={18} aria-hidden="true" />} label="E-post" href="mailto:post@service-leverandøren.no" value="post@service-leverandøren.no" />
               <ContactRow icon={<MapPin size={18} aria-hidden="true" />} label="Område" value="Skjeberg · Østfold og nærområdene" />
             </div>
           </div>
