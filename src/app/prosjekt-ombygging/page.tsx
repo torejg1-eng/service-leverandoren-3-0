@@ -190,7 +190,7 @@ export default function ProsjektOmbyggingPage() {
             </p>
             <p className="mt-6">
               Dersom behovet først krever en teknisk avklaring, kan en
-              <Link href="/optimalisering"> kartlegging av bygg og anlegg</Link> være riktig
+              <Link href="/optimalisering"> energioptimalisering av næringsbygg</Link> være riktig
               start. Når løsningen er bestemt, gir et presist omfang et bedre grunnlag for både
               gjennomføring og overlevering.
             </p>

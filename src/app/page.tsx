@@ -34,10 +34,10 @@ const services = [
   },
   {
     number: "02",
-    title: "Energioptimalisering",
+    title: "Energioptimalisering av næringsbygg",
     text: "Vi finner unødvendig energibruk, feil driftstider og ubalanse i tekniske anlegg – og prioriterer tiltak som er praktiske å gjennomføre.",
     href: "/optimalisering",
-    link: "Se energioptimalisering",
+    link: "Se energioptimalisering av næringsbygg",
   },
   {
     number: "03",
@@ -57,16 +57,16 @@ const process = [
 
 const insights = [
   {
+    title: "Hvor vanlig er feilregulerte bygg – egentlig?",
+    text: "Slik vurderer du om varme, ventilasjon og driftstider i et næringsbygg er riktig regulert.",
+    href: "/innsikt/hvor-vanlig-er-feilregulerte-bygg",
+    tag: "Energioptimalisering",
+  },
+  {
     title: "Sjekkliste for eiendomsdrift som faktisk fungerer",
     text: "En praktisk sjekkliste som gir bedre kontroll på drift, avvik og småutbedringer.",
     href: "/innsikt/sjekkliste-eiendomsdrift",
     tag: "Eiendomsdrift",
-  },
-  {
-    title: "Fra avvik til tiltak",
-    text: "Slik prioriterer du avvik før små feil utvikler seg til store problemer.",
-    href: "/innsikt/avvik-til-tiltak",
-    tag: "Oppfølging",
   },
   {
     title: "En enkel modell for teknisk tilsyn",
@@ -254,13 +254,13 @@ export default function HomePage() {
       <section className="section-space border-y border-[#101a16]/12 bg-[#e9ece5]">
         <div className="site-shell grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-start">
           <div>
-            <p className="eyebrow">Optimalisering / 04</p>
-            <h2 className="section-title mt-6">Når bygget fungerer – men ikke optimalt.</h2>
+            <p className="eyebrow">Energioptimalisering / 04</p>
+            <h2 className="section-title mt-6">Når næringsbygget fungerer – men ikke optimalt.</h2>
             <p className="lead-copy mt-7 text-[#526159]">
               Høyt forbruk, ujevn temperatur eller gjentakende alarmer er ofte symptomer
               på driftstider, regulering eller vedlikehold som ikke spiller sammen.
             </p>
-            <Link href="/optimalisering" className="editorial-link mt-8">Slik jobber vi med optimalisering <ArrowRight size={16} aria-hidden="true" /></Link>
+            <Link href="/optimalisering" className="editorial-link mt-8">Slik jobber vi med energioptimalisering av næringsbygg <ArrowRight size={16} aria-hidden="true" /></Link>
           </div>
 
           <div className="border-t border-[#101a16]/20">

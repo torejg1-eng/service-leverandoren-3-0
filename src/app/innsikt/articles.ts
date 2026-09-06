@@ -92,7 +92,7 @@ export const insightArticles: InsightArticle[] = [
       "Trinnvise tiltak og før-/ettermåling gir et tryggere beslutningsgrunnlag.",
     ],
     serviceHref: "/optimalisering",
-    serviceLabel: "Se hvordan vi jobber med energioptimalisering",
+    serviceLabel: "Se hvordan vi jobber med energioptimalisering av næringsbygg",
   },
   {
     slug: "sjekkliste-eiendomsdrift",

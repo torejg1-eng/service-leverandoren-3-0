@@ -16,7 +16,8 @@ export const metadata: Metadata = {
     "Praktisk eiendomsdrift, energioptimalisering og prosjektgjennomføring for næringsbygg, sameier og eiere i Østfold.",
   keywords: [
     "eiendomsdrift Østfold",
-    "energioptimalisering bygg",
+    "energioptimalisering næringsbygg",
+    "energioptimalisering Østfold",
     "teknisk drift",
     "byggservice",
     "vaktmestertjenester",
@@ -63,7 +64,10 @@ const structuredData = {
       areaServed: { "@type": "AdministrativeArea", name: "Østfold" },
       knowsAbout: [
         "Eiendomsdrift",
-        "Energioptimalisering",
+        "Energioptimalisering av næringsbygg",
+        "Ventilasjon og VAV",
+        "Vannbåren varme",
+        "SD-anlegg og teknisk drift",
         "Teknisk tilsyn",
         "Prosjektgjennomføring",
         "Byggservice",

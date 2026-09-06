@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 const services = [
-  ["Energioptimalisering", "/optimalisering"],
+  ["Energioptimalisering av næringsbygg", "/optimalisering"],
   ["Eiendomsdrift", "/eiendomsdrift"],
   ["Prosjekt og ombygging", "/prosjekt-ombygging"],
   ["Utførte prosjekter", "/prosjekter"],

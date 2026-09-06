@@ -145,7 +145,7 @@ export default function EiendomsdriftPage() {
         intro="Vi følger opp løpende drift, teknisk tilsyn og praktisk vedlikehold. Målet er forutsigbarhet for eier, styre og leietakere – med ett tydelig løp fra observasjon til utført tiltak."
         primaryLabel="Spør om driftsavtale"
         secondaryHref="/optimalisering"
-        secondaryLabel="Se energioptimalisering"
+        secondaryLabel="Se energioptimalisering av næringsbygg"
         stats={[
           { label: "Oppfølging", value: "Faste runder og tydelig ansvar" },
           { label: "Arbeidsflyt", value: "Avvik · prioritering · tiltak" },
